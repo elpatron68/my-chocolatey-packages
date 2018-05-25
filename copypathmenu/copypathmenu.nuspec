@@ -38,7 +38,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>Martin Stoeckli</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://www.martinstoeckli.ch/copypathmenu/copypathmenu.html</projectUrl>
-    <iconUrl>https://i.imgur.com/9yZ1LAa.png</iconUrl>
+    <iconUrl>https://www.martinstoeckli.ch/ladybug.png</iconUrl>
     <copyright>(c) 2008 Matrin Stoeckli</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>https://www.martinstoeckli.ch/copypathmenu/copypathmenu.html</licenseUrl>
