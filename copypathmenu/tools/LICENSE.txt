@@ -2,8 +2,6 @@
 
 LICENSE
 
-<Insert License Here>
-
 CopyPathMenu is freeware, you can make free copies, give it to friends or do whatever you want to do with it. However, you are not allowed to redistribute it in any modified form, or to sell it and earn money.
 
 THIS SOFTWARE IS PROVIDED WITHOUT WARRANTIES OF ANY KIND. THE AUTHOR CAN'T BE MADE LIABLE FOR DAMAGES WHICH ARE CAUSED BY USING THIS SOFTWARE.
