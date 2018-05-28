@@ -22,7 +22,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- This section is about this package, although id and version have ties back to the software -->
     <!-- id is lowercase and if you want a good separator for words, use '-', not '.'. Dots are only acceptable as suffixes for certain types of packages, e.g. .install, .portable, .extension, .template -->
     <!-- If the software is cross-platform, attempt to use the same id as the debian/rpm package(s) if possible. -->
-    <id>lanconfig</id>
+    <id>lanmonitor</id>
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
@@ -34,7 +34,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>LANconfig (Install)</title>
+    <title>LANmonitor (Install)</title>
     <authors>LANCOM Systems GmbH</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://www.lancom-systems.de/</projectUrl>
@@ -47,23 +47,19 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <docsUrl>https://www.lancom-systems.de/download/documentation/Reference_Manual/LCOS-REFMANUAL-1012-DE.pdf</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>LANconfig LANCOM router configuration admin tool</tags>
-    <summary>Management and monitoring software package for any LANCOM infrastructure with up to 50 devices. It offers a user-friendly operating interface for configuring and monitoring LANCOM devices in both local and remote networks</summary>
+    <tags>LANmonitor LANCOM router monitoring tool</tags>
+    <summary>The tool LANmonitor is free of charge and ideal for the surveillance of small and mid-size networks for up to 50 devices.</summary>
     <description>
-    ## The free-of-charge LANCOM Management-Centrale
-    
-    LANconfig is the free-of-charge and user-friendly software for the configuration of LANCOM devices. LANconfig has a huge spectrum of applications, from the user-friendly commissioning of a single device with installation wizards to the comprehensive management of large-scale installations.
+    ## Convenient and structured surveillance in real-time
 
-    - Automatic detection of new devices
-    - All-round Setup Wizards
-    - Remote configuration over IP or ISDN
-    - Integrated configuration via Telnet, SSH and HTTPS
-    - Context-sensitive help system
+    - Connection and interface status display
+    - Transfer rates, protocols, and IP addresses
+    - Display of software version, CPU load, and memory usage
+    - Logging of online times and transfer volumes
+    - Firewall event display and device syslog
+    - Logging of device activity to a file
     - Graphical trace module for recordings and troubleshooting
-    - QuickFinder, the quick way to find devices, parameters and settings
-    - High-performance IPv4 and IPv6 firewall, including rule configuration
-    - QuickLinks for intuitive user guidance through complex structures
-    
+    - Spectral Scan to identify sources of interference in the WLAN
     </description>
     <releaseNotes>https://www.lancom-systems.com/fileadmin/download/documentation/Release_Notes/RN_LANtools-1012-RU7_EN.pdf</releaseNotes>
     <!-- =============================== -->      
