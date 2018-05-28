@@ -47,19 +47,19 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <docsUrl>https://www.lancom-systems.de/download/documentation/Reference_Manual/LCOS-REFMANUAL-1012-DE.pdf</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>LANmonitor LANCOM router monitoring tool</tags>
+    <tags>LANmonitor LANCOM router monitoring surveillance tool</tags>
     <summary>The tool LANmonitor is free of charge and ideal for the surveillance of small and mid-size networks for up to 50 devices.</summary>
     <description>
-    ## Convenient and structured surveillance in real-time
+## Convenient and structured surveillance in real-time
 
-    - Connection and interface status display
-    - Transfer rates, protocols, and IP addresses
-    - Display of software version, CPU load, and memory usage
-    - Logging of online times and transfer volumes
-    - Firewall event display and device syslog
-    - Logging of device activity to a file
-    - Graphical trace module for recordings and troubleshooting
-    - Spectral Scan to identify sources of interference in the WLAN
+- Connection and interface status display
+- Transfer rates, protocols, and IP addresses
+- Display of software version, CPU load, and memory usage
+- Logging of online times and transfer volumes
+- Firewall event display and device syslog
+- Logging of device activity to a file
+- Graphical trace module for recordings and troubleshooting
+- Spectral Scan to identify sources of interference in the WLAN
     </description>
     <releaseNotes>https://www.lancom-systems.com/fileadmin/download/documentation/Release_Notes/RN_LANtools-1012-RU7_EN.pdf</releaseNotes>
     <!-- =============================== -->      
