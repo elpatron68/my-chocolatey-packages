@@ -9,6 +9,7 @@ License: MIT https://opensource.org/licenses/MIT, see LICENSE
 import sys
 import os
 import urllib.request
+import requests
 import git
 import re
 import logging
@@ -120,11 +121,31 @@ def gitCommit(message):
         LOG.warn('Failed to git push repository')
     return
 
+
+def sendmail(messageText):
+    LOG.info('Sending email report')
+    key = 'key-65d52cc570230f0f4e25684c2b2b7238'
+    sandbox = '	sandbox2c45884527824533b2ccaae8ded609db.mailgun.org'
+    recipient = 'm.busche@gmail.com'
+
+    request_url = 'https://api.mailgun.net/v2/{0}/messages'.format(sandbox)
+    request = requests.post(request_url, auth=('api', key), data={
+        'from': 'm.busche@medisoftware.de',
+        'to': recipient,
+        'subject': 'Hello',
+        'text': messageText
+        })
+
+    LOG.debug('Status: {0}'.format(request.status_code))
+    return
+
+
 if __name__ == "__main__":
     try:
         os.remove('chocoupdate.log', '.')
     except:
         print('Old log file not found or not deletable')
+    # sendmail('Hallo Weltchen!')
 
     LOG = setup_custom_logger('chocoupdate')
     LOG.info('Starting chocoupdate')
