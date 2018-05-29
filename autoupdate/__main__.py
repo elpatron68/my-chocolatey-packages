@@ -67,7 +67,7 @@ def patchPackage(nuspecFile, psScriptfile, downloadUrl, newVersion):
         inplace_change(nuspecFile, oldVersion, newVersion)
         LOG.info('Updating PowerShell script with new url')
         patchPs1(psScriptfile, downloadUrl)
-        packagename = newVersion.split('\\')[-1]
+        packagename = nuspecFile.split('\\')[-1].split('.')[0]
         gitCommit('Autoupdate: Package updated to version ' + packagename)
         return True
     else:
