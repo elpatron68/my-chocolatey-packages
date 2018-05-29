@@ -63,11 +63,11 @@ def patchPackage(nuspecFile, psScriptfile, downloadUrl, newVersion):
         oldVersion = oldVersion.replace('<version>', '').replace('</version>', '')
     LOG.debug('Version from nuspec: ' + oldVersion)
     if not oldVersion == newVersion:
-        LOG.info('We have an updated version. replacing version information')
+        LOG.info('We have an updated version - replacing version information')
         inplace_change(nuspecFile, oldVersion, newVersion)
         LOG.info('Updating PowerShell script with new url')
         patchPs1(psScriptfile, downloadUrl)
-        gitCommit('Autoupdate package updated ti  version %s', newVersion)
+        gitCommit('Autoupdate: Package updated to version ' + newVersion)
         return True
     else:
         return False
@@ -106,7 +106,11 @@ def chocopush(projectDir):
 
 def gitCommit(message):
     repo = git.Repo(path='.')
-    repo.git.commit(message)
+    try:
+        repo.git.commit(m=message)
+    except:
+        LOG.warn('Failed to git commit')
+    
     try:
         repo.git.push("origin", "master")
         LOG.info('Git committed and pushed')
