@@ -38,7 +38,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>LANCOM Systems GmbH</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://www.lancom-systems.de/</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/lanconfig.png</iconUrl>-->
+    <iconUrl>https://i.imgur.com/FttC8AJ.png</iconUrl>
     <copyright>2018 LANCOM Systems GmbH</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
@@ -50,20 +50,19 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <tags>LANconfig LANCOM router configuration admin tool</tags>
     <summary>Management and monitoring software package for any LANCOM infrastructure with up to 50 devices. It offers a user-friendly operating interface for configuring and monitoring LANCOM devices in both local and remote networks</summary>
     <description>
-    ## The free-of-charge LANCOM Management-Centrale
+## The free-of-charge LANCOM Management-Centrale
     
-    LANconfig is the free-of-charge and user-friendly software for the configuration of LANCOM devices. LANconfig has a huge spectrum of applications, from the user-friendly commissioning of a single device with installation wizards to the comprehensive management of large-scale installations.
+LANconfig is the free-of-charge and user-friendly software for the configuration of LANCOM devices. LANconfig has a huge spectrum of applications, from the user-friendly commissioning of a single device with installation wizards to the comprehensive management of large-scale installations.
 
-    - Automatic detection of new devices
-    - All-round Setup Wizards
-    - Remote configuration over IP or ISDN
-    - Integrated configuration via Telnet, SSH and HTTPS
-    - Context-sensitive help system
-    - Graphical trace module for recordings and troubleshooting
-    - QuickFinder, the quick way to find devices, parameters and settings
-    - High-performance IPv4 and IPv6 firewall, including rule configuration
-    - QuickLinks for intuitive user guidance through complex structures
-    
+- Automatic detection of new devices
+- All-round Setup Wizards
+- Remote configuration over IP or ISDN
+- Integrated configuration via Telnet, SSH and HTTPS
+- Context-sensitive help system
+- Graphical trace module for recordings and troubleshooting
+- QuickFinder, the quick way to find devices, parameters and settings
+- High-performance IPv4 and IPv6 firewall, including rule configuration
+- QuickLinks for intuitive user guidance through complex structures
     </description>
     <releaseNotes>https://www.lancom-systems.com/fileadmin/download/documentation/Release_Notes/RN_LANtools-1012-RU7_EN.pdf</releaseNotes>
     <!-- =============================== -->      
