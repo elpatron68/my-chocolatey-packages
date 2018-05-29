@@ -122,30 +122,30 @@ def gitCommit(message):
     return
 
 
-def sendmail(messageText):
-    LOG.info('Sending email report')
+def sendMessage(messageText, attachedFile):
     key = 'key-65d52cc570230f0f4e25684c2b2b7238'
     sandbox = 'sandbox2c45884527824533b2ccaae8ded609db.mailgun.org'
     recipient = 'm.busche@gmail.com'
-
     request_url = 'https://api.mailgun.net/v2/{0}/messages'.format(sandbox)
-    request = requests.post(request_url, auth=('api', key), data={
-        'from': 'm.busche@medisoftware.de',
-        'to': recipient,
-        'subject': 'Hello',
-        'text': messageText
-        })
 
-    LOG.debug('Status: {0}'.format(request.status_code))
-    return
+    return requests.post(
+        request_url,
+        auth=("api", key),
+        files=[("inline", open(attachedFile))],
+        data={"from": "m.busche@medisoftware.de",
+              "to": recipient,
+              "subject": "chocoupdate report",
+              "text": messageText
+              })
 
 
 if __name__ == "__main__":
+    # request = sendMessage("Chocoupdate has found updates. See attached file for details.\n\nSincerly,\nyours Chocoupdate", r'.\chocoupdate.log')
+    # print('Status: {0}'.format(request.status_code))
     try:
         os.remove('chocoupdate.log', '.')
     except:
         print('Old log file not found or not deletable')
-    # sendmail('Hallo Weltchen!')
 
     LOG = setup_custom_logger('chocoupdate')
     LOG.info('Starting chocoupdate')
@@ -159,12 +159,14 @@ if __name__ == "__main__":
     LOG.debug('Newest LANconfig version: %s', LANconfig[1])
     LOG.debug('Newest LANmonitor Download URL: %s', LANmonitor[0])
     LOG.debug('Newest LANmonitor version: %s', LANmonitor[1])
+    updatedPackage = ''
     result = patchPackage(r'.\LANconfig\lanconfig.nuspec', 
                           r'.\LANconfig\tools\chocolateyinstall.ps1',
                           LANconfig[0],
                           LANconfig[1])
     if result == True:
         chocopush('.\\LANconfig\\')
+        updatedPackage += 'LANconfig: Version ' + LANconfig[1]
 
     result = patchPackage(r'.\LANmonitor\lanmonitor.nuspec', 
                           r'.\LANmonitor\tools\chocolateyinstall.ps1',
@@ -172,4 +174,11 @@ if __name__ == "__main__":
                           LANmonitor[1])
     if result == True:
         chocopush('.\\LANmonitor\\')
+        updatedPackage += '\nLANmonitor: Version LANmonitor[1]'
+
+    if not updatedPackage is '':
+        sendMessage('Chocoupdate has found updates for the following packages:\n\n' + 
+                    updatedPackage + 
+                    '\n\nSee attached file for details.\n\nSincerly,\nyours Chocoupdate', 
+                    r'.\chocoupdate.log')
     # result = patchPackage(r'.\LANmonitor\lanmonitor.nuspec', LANmonitor[0], LANmonitor[1])
