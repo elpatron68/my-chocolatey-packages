@@ -174,7 +174,7 @@ if __name__ == "__main__":
                           LANmonitor[1])
     if result == True:
         chocopush('.\\LANmonitor\\')
-        updatedPackage += '\nLANmonitor: Version LANmonitor[1]'
+        updatedPackage += '\nLANmonitor: Version ' + LANmonitor[1]
 
     if not updatedPackage is '':
         sendMessage('Chocoupdate has found updates for the following packages:\n\n' + 
