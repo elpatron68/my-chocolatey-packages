@@ -125,7 +125,7 @@ def gitCommit(message):
 def sendmail(messageText):
     LOG.info('Sending email report')
     key = 'key-65d52cc570230f0f4e25684c2b2b7238'
-    sandbox = '	sandbox2c45884527824533b2ccaae8ded609db.mailgun.org'
+    sandbox = 'sandbox2c45884527824533b2ccaae8ded609db.mailgun.org'
     recipient = 'm.busche@gmail.com'
 
     request_url = 'https://api.mailgun.net/v2/{0}/messages'.format(sandbox)
