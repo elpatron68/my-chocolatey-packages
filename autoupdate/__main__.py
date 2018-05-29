@@ -106,8 +106,9 @@ def chocopush(projectDir):
 
 def gitCommit(message):
     repo = git.Repo(path='.')
+    repo.git.status()
     try:
-        repo.git.commit(m=message)
+        repo.git.commit('-a', '-m', message)
     except:
         LOG.warn('Failed to git commit')
     
