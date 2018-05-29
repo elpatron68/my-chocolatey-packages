@@ -9,6 +9,7 @@ License: MIT https://opensource.org/licenses/MIT, see LICENSE
 import sys
 import os
 import urllib.request
+import git
 import re
 import logging
 from configparser import ConfigParser
@@ -66,6 +67,7 @@ def patchPackage(nuspecFile, psScriptfile, downloadUrl, newVersion):
         inplace_change(nuspecFile, oldVersion, newVersion)
         LOG.info('Updating PowerShell script with new url')
         patchPs1(psScriptfile, downloadUrl)
+        gitCommit('Autoupdate package updated ti  version %s', newVersion)
         return True
     else:
         return False
@@ -101,6 +103,16 @@ def inplace_change(filename, old_string, new_string):
 def chocopush(projectDir):
     return
 
+
+def gitCommit(message):
+    repo = git.Repo(path='.')
+    repo.git.commit(message)
+    try:
+        repo.git.push("origin", "master")
+        LOG.info('Git committed and pushed')
+    except:
+        LOG.warn('Failed to git push repository')
+    return
 
 if __name__ == "__main__":
     try:
