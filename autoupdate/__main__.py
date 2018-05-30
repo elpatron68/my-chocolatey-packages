@@ -13,6 +13,7 @@ import requests
 import git
 import re
 import logging
+import chocopack
 from configparser import ConfigParser
 
 LOG = None
@@ -150,11 +151,12 @@ if __name__ == "__main__":
     LOG = setup_custom_logger('chocoupdate')
     LOG.info('Starting chocoupdate')
     url = 'https://www.lancom-systems.de/downloads/'
-    expression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
+    downloadExpression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
+    releasenotesExpression = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     versionpattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
-    LANmonitor = getDownloadUrlVersion(url, expression, versionpattern)
-    expression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
-    LANconfig = getDownloadUrlVersion(url, expression, versionpattern)
+    LANmonitor = getDownloadUrlVersion(url, downloadExpression, versionpattern)
+    downloadExpression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
+    LANconfig = getDownloadUrlVersion(url, downloadExpression, versionpattern)
     LOG.debug('Newest LANconfig Download URL: %s', LANconfig[0])
     LOG.debug('Newest LANconfig version: %s', LANconfig[1])
     LOG.debug('Newest LANmonitor Download URL: %s', LANmonitor[0])
