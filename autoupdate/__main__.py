@@ -60,17 +60,17 @@ def setup_custom_logger(name):
 
 
 def getDownloadUrlVersion(url, expression, versionpattern):
-    LOG.info('Getting website content')
+    LOG.debug('Downloading website content')
     with urllib.request.urlopen(url) as response:
         htmltext = response.read().decode('utf-8')
     downloadUrl = re.findall(re.compile(expression), htmltext)[0]
-    LOG.debug('Download Url: %s', downloadUrl)
+    LOG.debug('Found download Url: %s', downloadUrl)
     version = re.findall(re.compile(versionpattern), downloadUrl)[0]
     # remove leading 0 after version point
     version = re.sub(re.compile(r'\.0+'), '.', version)
     # remove LANCOM 'RU'
     version = re.sub(re.compile(r'-RU'), '.', version)
-    LOG.debug('Version information: %s', version)
+    LOG.debug('Found version information: %s', version)
     return(downloadUrl, version)
 
 
@@ -189,11 +189,15 @@ if __name__ == "__main__":
                                                                                    pkgLanconfig.downloadPattern,
                                                                                    pkgLanconfig.versionPattern)
     LOG.info('Downloading file: %s', pkgLanconfig.downloadUrl)
-    localfilename = '.\\' + pkgLanconfig.downloadUrl.split('/')[-1]
+    if not os.path.exists('.\\tmp'):
+        os.makedirs('.\\tmp')
+    localfilename = '.\\tmp\\' + pkgLanconfig.downloadUrl.split('/')[-1]
     urllib.request.urlretrieve(pkgLanconfig.downloadUrl, localfilename)
     LOG.info('File saved as %s', localfilename)
     pkgLanconfig.sha256 = sha256_checksum(localfilename)
     LOG.info('Sha256 checksum: %s', pkgLanconfig.sha256)
+    LOG.info('Deleting %s', localfilename)
+    os.remove(localfilename)
 
     pkgLanmonitor = chocopkg()
     pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
