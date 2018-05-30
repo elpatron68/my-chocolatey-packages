@@ -170,16 +170,17 @@ def sha256_checksum(filename, block_size=65536):
 
 
 if __name__ == "__main__":
-    # request = sendMessage("Chocoupdate has found updates. See attached file for details.\n\nSincerly,\nyours Chocoupdate", r'.\chocoupdate.log')
-    # print('Status: {0}'.format(request.status_code))
+    # Delete former log file
     try:
         os.remove('chocoupdate.log', '.')
     except:
         print('Old log file not found or not deletable')
 
+    # Set up logging
     LOG = setup_custom_logger('chocoupdate')
     LOG.info('Starting chocoupdate')
     
+    # Initialize LANconfig package
     pkgLanconfig = chocopkg()
     pkgLanconfig.projectDir = '.\\LANconfig\\'
     pkgLanconfig.vendorUrl = 'https://www.lancom-systems.de/downloads/'
@@ -187,43 +188,26 @@ if __name__ == "__main__":
     pkgLanconfig.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     pkgLanconfig.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
 
+    # Download web page
     LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
     [pkgLanconfig.downloadUrl, pkgLanconfig.latestVersion] = getDownloadUrlVersion(pkgLanconfig.vendorUrl,
                                                                                    pkgLanconfig.downloadPattern,
                                                                                    pkgLanconfig.versionPattern)
+    # Download installation package
     LOG.info('Downloading file: %s', pkgLanconfig.downloadUrl)
     if not os.path.exists('.\\tmp'):
         os.makedirs('.\\tmp')
     localfilename = '.\\tmp\\' + pkgLanconfig.downloadUrl.split('/')[-1]
     urllib.request.urlretrieve(pkgLanconfig.downloadUrl, localfilename)
     LOG.info('File saved as %s', localfilename)
+    
+    # Create sha256 checksum and delete file
     pkgLanconfig.sha256 = sha256_checksum(localfilename)
     LOG.info('Sha256 checksum: %s', pkgLanconfig.sha256)
     LOG.info('Deleting %s', localfilename)
     os.remove(localfilename)
 
-    pkgLanmonitor = chocopkg()
-    pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
-    pkgLanmonitor.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
-    pkgLanmonitor.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
-    pkgLanmonitor.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
-    
-    LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
-    [pkgLanmonitor.downloadUrl, pkgLanmonitor.latestVersion] = getDownloadUrlVersion(pkgLanmonitor.vendorUrl,
-                                                                                     pkgLanmonitor.downloadPattern,
-                                                                                     pkgLanmonitor.versionPattern)
-
-    LOG.info('Downloading file: %s', pkgLanmonitor.downloadUrl)
-    if not os.path.exists('.\\tmp'):
-        os.makedirs('.\\tmp')
-    localfilename = '.\\tmp\\' + pkgLanmonitor.downloadUrl.split('/')[-1]
-    urllib.request.urlretrieve(pkgLanmonitor.downloadUrl, localfilename)
-    LOG.info('File saved as %s', localfilename)
-    pkgLanconfig.sha256 = sha256_checksum(localfilename)
-    LOG.info('Sha256 checksum: %s', pkgLanmonitor.sha256)
-    LOG.info('Deleting %s', localfilename)
-    os.remove(localfilename)
-
+    # Update chocolately package
     updatedPackage = ''
     result = patchPackage(pkgLanconfig.projectDir + 'lanconfig.nuspec', 
                           pkgLanconfig.projectDir + 'tools\\chocolateyinstall.ps1',
@@ -233,6 +217,35 @@ if __name__ == "__main__":
         chocopush(pkgLanconfig.projectDir)
         updatedPackage += 'LANconfig: Version %s', pkgLanconfig.latestVersion
 
+
+    # Initialize LANmonitor package
+    pkgLanmonitor = chocopkg()
+    pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
+    pkgLanmonitor.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
+    pkgLanmonitor.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
+    pkgLanmonitor.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
+    
+    # Download web page
+    LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
+    [pkgLanmonitor.downloadUrl, pkgLanmonitor.latestVersion] = getDownloadUrlVersion(pkgLanmonitor.vendorUrl,
+                                                                                     pkgLanmonitor.downloadPattern,
+                                                                                     pkgLanmonitor.versionPattern)
+
+    # Download installation package
+    LOG.info('Downloading file: %s', pkgLanmonitor.downloadUrl)
+    if not os.path.exists('.\\tmp'):
+        os.makedirs('.\\tmp')
+    localfilename = '.\\tmp\\' + pkgLanmonitor.downloadUrl.split('/')[-1]
+    urllib.request.urlretrieve(pkgLanmonitor.downloadUrl, localfilename)
+    LOG.info('File saved as %s', localfilename)
+    
+    # Create sha256 checksum and delete file
+    pkgLanconfig.sha256 = sha256_checksum(localfilename)
+    LOG.info('Sha256 checksum: %s', pkgLanmonitor.sha256)
+    LOG.info('Deleting %s', localfilename)
+    os.remove(localfilename)
+
+    # Update chocolately package
     result = patchPackage(pkgLanmonitor.projectDir + 'lanmonitor.nuspec', 
                           pkgLanmonitor.projectDir + 'tools\\chocolateyinstall.ps1',
                           pkgLanmonitor.downloadUrl,
@@ -241,6 +254,7 @@ if __name__ == "__main__":
         chocopush(pkgLanmonitor.projectDir)
         updatedPackage += '\nLANmonitor: Version %s', pkgLanmonitor.latestVersion
 
+    # Send email report
     LOG.info('Sending email report')
     if not updatedPackage is '':
         sendMessage('Chocoupdate has found updates for the following packages:\n\n' + 
