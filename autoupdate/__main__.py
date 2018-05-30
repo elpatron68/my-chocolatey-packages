@@ -16,7 +16,6 @@ import logging
 import hashlib
 
 LOG = None
-CONFIGFILE = r'.\autoupdate\chocoupdate.ini'
 
 
 # package class
