@@ -13,6 +13,7 @@ import requests
 import git
 import re
 import logging
+import hashlib
 
 LOG = None
 CONFIGFILE = r'.\autoupdate\chocoupdate.ini'
@@ -158,6 +159,14 @@ def sendMessage(messageText, attachedFile):
               })
 
 
+def sha256_checksum(filename, block_size=65536):
+    sha256 = hashlib.sha256()
+    with open(filename, 'rb') as f:
+        for block in iter(lambda: f.read(block_size), b''):
+            sha256.update(block)
+    return sha256.hexdigest()
+
+
 if __name__ == "__main__":
     # request = sendMessage("Chocoupdate has found updates. See attached file for details.\n\nSincerly,\nyours Chocoupdate", r'.\chocoupdate.log')
     # print('Status: {0}'.format(request.status_code))
@@ -178,6 +187,9 @@ if __name__ == "__main__":
     [pkgLanconfig.downloadUrl, pkgLanconfig.latestVersion] = getDownloadUrlVersion(pkgLanconfig.vendorUrl,
                                                                                    pkgLanconfig.downloadPattern,
                                                                                    pkgLanconfig.versionPattern)
+    localfilename = '.\\' + pkgLanconfig.downloadUrl.split('/')[-1]
+    urllib.request.urlretrieve(pkgLanconfig.downloadUrl, localfilename)
+    pkgLanconfig.sha256 = sha256_checksum(localfilename)
 
     pkgLanmonitor = chocopkg()
     pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
