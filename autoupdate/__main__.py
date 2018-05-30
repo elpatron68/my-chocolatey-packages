@@ -21,6 +21,7 @@ CONFIGFILE = r'.\autoupdate\chocoupdate.ini'
 
 # package class
 class chocopkg:
+    projectDir = ''
     vendorUrl = ''
     downloadPattern = ''
     versionPattern = ''
@@ -30,7 +31,8 @@ class chocopkg:
     sha256 = ''
 
     def dump(self):
-        return ('Vendor-URL: ' + self.vendorUrl + '\n' +
+        return ('Project directory: ' + self.projectDir + '\n' +
+                'Vendor-URL: ' + self.vendorUrl + '\n' +
                 'Download-Pattern: ' + self.downloadPattern + '\n' +
                 'Version-Pattern: ' + self.versionPattern + '\n' +
                 'Release notes-Pattern: ' + self.releasnotesPattern + '\n' +
@@ -179,6 +181,7 @@ if __name__ == "__main__":
     LOG.info('Starting chocoupdate')
     
     pkgLanconfig = chocopkg()
+    pkgLanconfig.projectDir = '.\\LANconfig\\'
     pkgLanconfig.vendorUrl = 'https://www.lancom-systems.de/downloads/'
     pkgLanconfig.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
     pkgLanconfig.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
@@ -204,42 +207,39 @@ if __name__ == "__main__":
     pkgLanmonitor.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
     pkgLanmonitor.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     pkgLanmonitor.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
-
+    
+    LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
     [pkgLanmonitor.downloadUrl, pkgLanmonitor.latestVersion] = getDownloadUrlVersion(pkgLanmonitor.vendorUrl,
                                                                                      pkgLanmonitor.downloadPattern,
                                                                                      pkgLanmonitor.versionPattern)
 
-    """
-    url = 'https://www.lancom-systems.de/downloads/'
-    downloadExpression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
-    releasenotesExpression = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
-    versionpattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
-    LANmonitor = getDownloadUrlVersion(url, downloadExpression, versionpattern)
+    LOG.info('Downloading file: %s', pkgLanmonitor.downloadUrl)
+    if not os.path.exists('.\\tmp'):
+        os.makedirs('.\\tmp')
+    localfilename = '.\\tmp\\' + pkgLanmonitor.downloadUrl.split('/')[-1]
+    urllib.request.urlretrieve(pkgLanmonitor.downloadUrl, localfilename)
+    LOG.info('File saved as %s', localfilename)
+    pkgLanconfig.sha256 = sha256_checksum(localfilename)
+    LOG.info('Sha256 checksum: %s', pkgLanmonitor.sha256)
+    LOG.info('Deleting %s', localfilename)
+    os.remove(localfilename)
 
-    downloadExpression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
-    LANconfig = getDownloadUrlVersion(url, downloadExpression, versionpattern)
-    """    
-    
-    LOG.debug('Newest LANconfig Download URL: %s', LANconfig[0])
-    LOG.debug('Newest LANconfig version: %s', LANconfig[1])
-    LOG.debug('Newest LANmonitor Download URL: %s', LANmonitor[0])
-    LOG.debug('Newest LANmonitor version: %s', LANmonitor[1])
     updatedPackage = ''
-    result = patchPackage(r'.\LANconfig\lanconfig.nuspec', 
-                          r'.\LANconfig\tools\chocolateyinstall.ps1',
-                          LANconfig[0],
-                          LANconfig[1])
+    result = patchPackage(pkgLanconfig.projectDir + 'lanconfig.nuspec', 
+                          pkgLanconfig.projectDir + 'tools\\chocolateyinstall.ps1',
+                          pkgLanconfig.downloadUrl,
+                          pkgLanconfig.latestVersion)
     if result == True:
-        chocopush('.\\LANconfig\\')
-        updatedPackage += 'LANconfig: Version ' + LANconfig[1]
+        chocopush(pkgLanconfig.projectDir)
+        updatedPackage += 'LANconfig: Version %s', pkgLanconfig.latestVersion
 
-    result = patchPackage(r'.\LANmonitor\lanmonitor.nuspec', 
-                          r'.\LANmonitor\tools\chocolateyinstall.ps1',
-                          LANmonitor[0],
-                          LANmonitor[1])
+    result = patchPackage(pkgLanmonitor.projectDir + 'lanmonitor.nuspec', 
+                          pkgLanmonitor.projectDir + 'tools\\chocolateyinstall.ps1',
+                          pkgLanmonitor.downloadUrl,
+                          pkgLanmonitor.latestVersion)
     if result == True:
-        chocopush('.\\LANmonitor\\')
-        updatedPackage += '\nLANmonitor: Version ' + LANmonitor[1]
+        chocopush(pkgLanmonitor.projectDir)
+        updatedPackage += '\nLANmonitor: Version %s', pkgLanmonitor.latestVersion
 
     LOG.info('Sending email report')
     if not updatedPackage is '':
