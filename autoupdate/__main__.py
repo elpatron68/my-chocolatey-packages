@@ -178,9 +178,14 @@ if __name__ == "__main__":
         chocopush('.\\LANmonitor\\')
         updatedPackage += '\nLANmonitor: Version ' + LANmonitor[1]
 
+    LOG.info('Sending email report')
     if not updatedPackage is '':
         sendMessage('Chocoupdate has found updates for the following packages:\n\n' + 
                     updatedPackage + 
-                    '\n\nSee attached file for details.\n\nSincerly,\nyours Chocoupdate', 
+                    '\n\nSee attached logfile for details.\n\nSincerly,\nyours Chocoupdate', 
                     r'.\chocoupdate.log')
-    # result = patchPackage(r'.\LANmonitor\lanmonitor.nuspec', LANmonitor[0], LANmonitor[1])
+    else:
+        sendMessage('Chocoupdate has not found new updates.\n\n' +
+                    'See attached logfile for details.\n\nSincerly,\nyours Chocoupdate', 
+                    r'.\chocoupdate.log')
+    
