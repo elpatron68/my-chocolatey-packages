@@ -13,11 +13,29 @@ import requests
 import git
 import re
 import logging
-import chocopack
 from configparser import ConfigParser
 
 LOG = None
 CONFIGFILE = r'.\autoupdate\chocoupdate.ini'
+
+
+# package class
+class chocopkg:
+    vendorUrl = ''
+    downloadPattern = ''
+    versionPattern = ''
+    releasnotesPattern = ''
+    latestVersion = ''
+    downloadUrl = ''
+
+    def dump(self):
+        return ('Vendor-URL: ' + chocopkg.vendorUrl + '\n' +
+                'Download-Pattern: ' + chocopkg.downloadPattern + '\n' +
+                'Version-Pattern: ' + chocopkg.versionPattern + '\n' +
+                'Release notes-Pattern: ' + chocopkg.releasnotesPattern + '\n' +
+                'Latest version: ' + chocopkg.latestVersion + '\n' +
+                'Download URL: ' + chocopkg.downloadUrl)
+                
 
 def setup_custom_logger(name):
     """
@@ -108,6 +126,7 @@ def chocopush(projectDir):
 
 
 def gitCommit(message):
+    LOG.info('Committing changes to Git repository')
     repo = git.Repo(path='.')
     repo.git.status()
     try:
@@ -115,6 +134,7 @@ def gitCommit(message):
     except:
         LOG.warn('Failed to git commit')
     
+    LOG.info('Git pushing to remote server')
     try:
         repo.git.push("origin", "master")
         LOG.info('Git committed and pushed')
@@ -150,13 +170,38 @@ if __name__ == "__main__":
 
     LOG = setup_custom_logger('chocoupdate')
     LOG.info('Starting chocoupdate')
+    
+    pkgLanconfig = chocopkg()
+    pkgLanconfig.vendorUrl = 'https://www.lancom-systems.de/downloads/'
+    pkgLanconfig.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
+    pkgLanconfig.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
+    pkgLanconfig.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
+
+    [pkgLanconfig.downloadUrl, pkgLanconfig.latestVersion] = getDownloadUrlVersion(pkgLanconfig.vendorUrl,
+                                                                                   pkgLanconfig.downloadPattern,
+                                                                                   pkgLanconfig.versionPattern)
+
+    pkgLanmonitor = chocopkg()
+    pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
+    pkgLanmonitor.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
+    pkgLanmonitor.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
+    pkgLanmonitor.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
+
+    [pkgLanmonitor.downloadUrl, pkgLanmonitor.latestVersion] = getDownloadUrlVersion(pkgLanmonitor.vendorUrl,
+                                                                                     pkgLanmonitor.downloadPattern,
+                                                                                     pkgLanmonitor.versionPattern)
+
+    """
     url = 'https://www.lancom-systems.de/downloads/'
     downloadExpression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
     releasenotesExpression = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     versionpattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
     LANmonitor = getDownloadUrlVersion(url, downloadExpression, versionpattern)
+
     downloadExpression = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
     LANconfig = getDownloadUrlVersion(url, downloadExpression, versionpattern)
+    """    
+    
     LOG.debug('Newest LANconfig Download URL: %s', LANconfig[0])
     LOG.debug('Newest LANconfig version: %s', LANconfig[1])
     LOG.debug('Newest LANmonitor Download URL: %s', LANmonitor[0])
