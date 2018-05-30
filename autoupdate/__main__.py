@@ -184,12 +184,16 @@ if __name__ == "__main__":
     pkgLanconfig.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     pkgLanconfig.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
 
+    LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
     [pkgLanconfig.downloadUrl, pkgLanconfig.latestVersion] = getDownloadUrlVersion(pkgLanconfig.vendorUrl,
                                                                                    pkgLanconfig.downloadPattern,
                                                                                    pkgLanconfig.versionPattern)
+    LOG.info('Downloading file: %s', pkgLanconfig.downloadUrl)
     localfilename = '.\\' + pkgLanconfig.downloadUrl.split('/')[-1]
     urllib.request.urlretrieve(pkgLanconfig.downloadUrl, localfilename)
+    LOG.info('File saved as %s', localfilename)
     pkgLanconfig.sha256 = sha256_checksum(localfilename)
+    LOG.info('Sha256 checksum: %s', pkgLanconfig.sha256)
 
     pkgLanmonitor = chocopkg()
     pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
