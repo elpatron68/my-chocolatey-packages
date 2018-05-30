@@ -180,7 +180,9 @@ if __name__ == "__main__":
     LOG = setup_custom_logger('chocoupdate')
     LOG.info('Starting chocoupdate')
     
+    #
     # Initialize LANconfig package
+    #
     pkgLanconfig = chocopkg()
     pkgLanconfig.projectDir = '.\\LANconfig\\'
     pkgLanconfig.vendorUrl = 'https://www.lancom-systems.de/downloads/'
@@ -217,8 +219,9 @@ if __name__ == "__main__":
         chocopush(pkgLanconfig.projectDir)
         updatedPackage += 'LANconfig: Version %s', pkgLanconfig.latestVersion
 
-
+    #
     # Initialize LANmonitor package
+    #
     pkgLanmonitor = chocopkg()
     pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
     pkgLanmonitor.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
