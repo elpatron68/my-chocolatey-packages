@@ -1,6 +1,6 @@
 # Chocolately package updater
 #
-# - Gets most recent version information and URL from download site
+# - Gets most recent version information and URL from download site, updates Chocolately package, commits and pushes to Git, pushes Chocolately
 """
 Author: Markus Busche (Twitter @elpatron_kiel, GitLab @m-busche, Github @elpatron68)
 License: MIT https://opensource.org/licenses/MIT, see LICENSE
