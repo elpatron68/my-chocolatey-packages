@@ -27,14 +27,16 @@ class chocopkg:
     releasnotesPattern = ''
     latestVersion = ''
     downloadUrl = ''
+    sha256 = ''
 
     def dump(self):
-        return ('Vendor-URL: ' + chocopkg.vendorUrl + '\n' +
-                'Download-Pattern: ' + chocopkg.downloadPattern + '\n' +
-                'Version-Pattern: ' + chocopkg.versionPattern + '\n' +
-                'Release notes-Pattern: ' + chocopkg.releasnotesPattern + '\n' +
-                'Latest version: ' + chocopkg.latestVersion + '\n' +
-                'Download URL: ' + chocopkg.downloadUrl)
+        return ('Vendor-URL: ' + self.vendorUrl + '\n' +
+                'Download-Pattern: ' + self.downloadPattern + '\n' +
+                'Version-Pattern: ' + self.versionPattern + '\n' +
+                'Release notes-Pattern: ' + self.releasnotesPattern + '\n' +
+                'Latest version: ' + self.latestVersion + '\n' +
+                'Download URL: ' + self.downloadUrl + '\n' +
+                'Sha256: ' + self.sha256)
                 
 
 def setup_custom_logger(name):
