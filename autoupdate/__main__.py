@@ -13,7 +13,6 @@ import requests
 import git
 import re
 import logging
-from configparser import ConfigParser
 
 LOG = None
 CONFIGFILE = r'.\autoupdate\chocoupdate.ini'
@@ -43,10 +42,7 @@ def setup_custom_logger(name):
     """
     Set up custom logging
     """
-    config = ConfigParser()
-    config.read(CONFIGFILE)
-    settings = dict(config.items('logging'))
-    loglevel = logging.getLevelName(settings['level'])
+    loglevel = 'DEBUG'
 
 
     formatter = logging.Formatter(fmt='%(asctime)s %(levelname)-8s %(message)s',
