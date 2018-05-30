@@ -97,6 +97,7 @@ def patchPackage(nuspecFile, psScriptfile, downloadUrl, realeasenotesUrl, newVer
     else:
         return False
 
+
 def patchPs1(psScriptfile, newURL):
     LOG.info('Updating %s', psScriptfile)
     with open(psScriptfile, 'r', encoding='utf-8') as f:
