@@ -5,3 +5,4 @@ LANmonitor/lanmonitor.10.12.7.nupkg
 /chocoupdate.log
 .vscode/launch.json
 .vscode
+autoupdate/__pycache__
