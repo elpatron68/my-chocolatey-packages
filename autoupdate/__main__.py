@@ -75,16 +75,20 @@ def getDownloadUrlVersion(url, expression, versionpattern):
     return(downloadUrl, version)
 
 
-def patchPackage(nuspecFile, psScriptfile, downloadUrl, newVersion):
+def patchPackage(nuspecFile, psScriptfile, downloadUrl, realeasenotesUrl, newVersion):
     LOG.info('Checking %s if we have an update', nuspecFile)
     with open(nuspecFile, 'r', encoding='utf8') as f:
         content = f.read()
         oldVersion = re.findall(re.compile(r'<version>.+</version>'), content)[0]
         oldVersion = oldVersion.replace('<version>', '').replace('</version>', '')
+        oldRnotes = re.findall(re.compile(r'<releaseNotes>.+</releaseNotes>'), content)[0]
+        oldRnotes = oldRnotes.replace('<releaseNotes>', '').replace('</releaseNotes>', '')
+
     LOG.debug('Version from nuspec: ' + oldVersion)
     if not oldVersion == newVersion:
-        LOG.info('We have an updated version - replacing version information')
+        LOG.info('We have an updated version - replacing version information and release notes Url')
         inplace_change(nuspecFile, oldVersion, newVersion)
+        inplace_change(nuspecFile, oldRnotes, realeasenotesUrl)
         LOG.info('Updating PowerShell script with new url')
         patchPs1(psScriptfile, downloadUrl)
         packagename = nuspecFile.split('\\')[-1].split('.')[0]
