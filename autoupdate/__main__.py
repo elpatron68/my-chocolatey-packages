@@ -20,25 +20,39 @@ LOG = None
 
 # package class
 class chocopkg:
+    projectId = ''
     projectDir = ''
+    nuspecFile = ''
+    ps1File = ''
     vendorUrl = ''
     downloadPattern = ''
     versionPattern = ''
     releasnotesPattern = ''
+    releasnotesUrl = ''
     latestVersion = ''
     downloadUrl = ''
     sha256 = ''
 
+    def setValues(self):
+        self.projectDir = '.\\' + self.projectId + '\\'
+        self.nuspecFile = self.projectDir + self.projectId + '.nuspec'
+        self.ps1File = self.projectDir + 'tools\\chocolatelyinstall.ps1'
+
+
     def dump(self):
-        return ('Project directory: ' + self.projectDir + '\n' +
+        return ('Project ID: ' + self.projectId + '\n' +
+                'Project directory: ' + self.projectDir + '\n' +
+                'Nuspec file: ' + self.nuspecFile + '\n' +
+                'Powershell script: ' + self.ps1File + '\n' +
                 'Vendor-URL: ' + self.vendorUrl + '\n' +
                 'Download-Pattern: ' + self.downloadPattern + '\n' +
                 'Version-Pattern: ' + self.versionPattern + '\n' +
                 'Release notes-Pattern: ' + self.releasnotesPattern + '\n' +
+                'Release notes-Url: ' + self.releasnotesUrl + '\n' +
                 'Latest version: ' + self.latestVersion + '\n' +
                 'Download URL: ' + self.downloadUrl + '\n' +
-                'Sha256: ' + self.sha256)
-                
+                'Sha256: ' + self.sha256)    
+
 
 def setup_custom_logger(name):
     """
@@ -60,24 +74,25 @@ def setup_custom_logger(name):
     return logger
 
 
-def getDownloadUrlVersion(url, expression, versionpattern):
+def getDownloadUrlVersion(pkgObject):
     LOG.debug('Downloading website content')
-    with urllib.request.urlopen(url) as response:
+    with urllib.request.urlopen(pkgObject.vendorUrl) as response:
         htmltext = response.read().decode('utf-8')
-    downloadUrl = re.findall(re.compile(expression), htmltext)[0]
+    downloadUrl = re.findall(re.compile(pkgObject.downloadPattern), htmltext)[0]
     LOG.debug('Found download Url: %s', downloadUrl)
-    version = re.findall(re.compile(versionpattern), downloadUrl)[0]
+    version = re.findall(re.compile(pkgObject.versionPattern), downloadUrl)[0]
     # remove leading 0 after version point
     version = re.sub(re.compile(r'\.0+'), '.', version)
     # remove LANCOM 'RU'
     version = re.sub(re.compile(r'-RU'), '.', version)
     LOG.debug('Found version information: %s', version)
-    return(downloadUrl, version)
+    releasnotesUrl = re.findall(re.compile(pkgObject.releasnotesPattern), htmltext)[0]
+    return(downloadUrl, version, releasnotesUrl)
 
 
-def patchPackage(nuspecFile, psScriptfile, downloadUrl, realeasenotesUrl, newVersion):
-    LOG.info('Checking %s if we have an update', nuspecFile)
-    with open(nuspecFile, 'r', encoding='utf8') as f:
+def patchPackage(pgkObject):
+    LOG.info('Checking %s if we have an update', pgkObject.nuspecFile)
+    with open(pgkObject.nuspecFile, 'r', encoding='utf8') as f:
         content = f.read()
         oldVersion = re.findall(re.compile(r'<version>.+</version>'), content)[0]
         oldVersion = oldVersion.replace('<version>', '').replace('</version>', '')
@@ -85,14 +100,13 @@ def patchPackage(nuspecFile, psScriptfile, downloadUrl, realeasenotesUrl, newVer
         oldRnotes = oldRnotes.replace('<releaseNotes>', '').replace('</releaseNotes>', '')
 
     LOG.debug('Version from nuspec: ' + oldVersion)
-    if not oldVersion == newVersion:
+    if not oldVersion == pgkObject.latestVersion:
         LOG.info('We have an updated version - replacing version information and release notes Url')
-        inplace_change(nuspecFile, oldVersion, newVersion)
-        inplace_change(nuspecFile, oldRnotes, realeasenotesUrl)
+        inplace_change(pgkObject.nuspecFile, oldVersion, pgkObject.latestVersion)
+        inplace_change(pgkObject.nuspecFile, oldRnotes, pgkObject.releasnotesUrl)
         LOG.info('Updating PowerShell script with new url')
-        patchPs1(psScriptfile, downloadUrl)
-        packagename = nuspecFile.split('\\')[-1].split('.')[0]
-        gitCommit('Autoupdate: Package updated to version ' + packagename)
+        patchPs1(pgkObject.ps1File, pgkObject.downloadUrl)
+        gitCommit('Autoupdate: Package ' + pgkObject.projectId + 'updated to version ' + pgkObject.latestVersion)
         return True
     else:
         return False
@@ -188,17 +202,16 @@ if __name__ == "__main__":
     # Initialize LANconfig package
     #
     pkgLanconfig = chocopkg()
-    pkgLanconfig.projectDir = '.\\LANconfig\\'
+    pkgLanconfig.projectId = 'lanconfig'
     pkgLanconfig.vendorUrl = 'https://www.lancom-systems.de/downloads/'
     pkgLanconfig.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
     pkgLanconfig.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     pkgLanconfig.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
+    pkgLanconfig.setValues()
 
     # Download web page
     LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
-    [pkgLanconfig.downloadUrl, pkgLanconfig.latestVersion] = getDownloadUrlVersion(pkgLanconfig.vendorUrl,
-                                                                                   pkgLanconfig.downloadPattern,
-                                                                                   pkgLanconfig.versionPattern)
+    [pkgLanconfig.downloadUrl, pkgLanconfig.latestVersion, pkgLanconfig.releasnotesUrl] = getDownloadUrlVersion(pkgLanconfig)
     # Download installation package
     LOG.info('Downloading file: %s', pkgLanconfig.downloadUrl)
     if not os.path.exists('.\\tmp'):
@@ -215,10 +228,8 @@ if __name__ == "__main__":
 
     # Update chocolately package
     updatedPackage = ''
-    result = patchPackage(pkgLanconfig.projectDir + 'lanconfig.nuspec', 
-                          pkgLanconfig.projectDir + 'tools\\chocolateyinstall.ps1',
-                          pkgLanconfig.downloadUrl,
-                          pkgLanconfig.latestVersion)
+    result = patchPackage(pkgLanconfig)
+
     if result == True:
         chocopush(pkgLanconfig.projectDir)
         updatedPackage += 'LANconfig: Version %s', pkgLanconfig.latestVersion
@@ -227,10 +238,12 @@ if __name__ == "__main__":
     # Initialize LANmonitor package
     #
     pkgLanmonitor = chocopkg()
+    pkgLanmonitor.projectId = 'lanmonitor'
     pkgLanmonitor.vendorUrl = 'https://www.lancom-systems.de/downloads/'
     pkgLanmonitor.downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANmonitor-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
     pkgLanmonitor.releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     pkgLanmonitor.versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
+    pkgLanmonitor.setValues()
     
     # Download web page
     LOG.info('Getting information from %s', pkgLanconfig.vendorUrl)
@@ -253,10 +266,7 @@ if __name__ == "__main__":
     os.remove(localfilename)
 
     # Update chocolately package
-    result = patchPackage(pkgLanmonitor.projectDir + 'lanmonitor.nuspec', 
-                          pkgLanmonitor.projectDir + 'tools\\chocolateyinstall.ps1',
-                          pkgLanmonitor.downloadUrl,
-                          pkgLanmonitor.latestVersion)
+    result = patchPackage(pkgLanmonitor)
     if result == True:
         chocopush(pkgLanmonitor.projectDir)
         updatedPackage += '\nLANmonitor: Version %s', pkgLanmonitor.latestVersion
