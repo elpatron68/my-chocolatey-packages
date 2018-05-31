@@ -208,7 +208,7 @@ if __name__ == "__main__":
     
     updatedPackage = ''
 
-    # instancelist = [ MyClass() for i in range(29)]
+    # Initialize packages
     packages = [chocopkg() for i in range(1)]
     packages[0].projectId = 'lanconfig'
     packages[0].vendorUrl = 'https://www.lancom-systems.de/downloads/'
@@ -224,32 +224,33 @@ if __name__ == "__main__":
     packages[1].versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
     packages[1].setValues()
 
-    for each package in packages:
-            # Download web page
-    LOG.info('Getting information from %s', package.vendorUrl)
-    [package.downloadUrl, package.latestVersion, package.releasnotesUrl] = getDownloadUrlVersion(package)
-    package.nupkgFile = package.setNupgk
+    for package in packages:
+        # Download web page
+        LOG.info('Getting information from %s', package.vendorUrl)
+        [package.downloadUrl, package.latestVersion, package.releasnotesUrl] = getDownloadUrlVersion(package)
+        package.nupkgFile = package.setNupgk
     
-    # Download installation package
-    LOG.info('Downloading file: %s', package.downloadUrl)
-    if not os.path.exists('.\\tmp'):
-        os.makedirs('.\\tmp')
-    localfilename = '.\\tmp\\' + package.downloadUrl.split('/')[-1]
-    urllib.request.urlretrieve(package.downloadUrl, localfilename)
-    LOG.info('File saved as %s', localfilename)
+        # Download installation package
+        LOG.info('Downloading file: %s', package.downloadUrl)
+        if not os.path.exists('.\\tmp'):
+            os.makedirs('.\\tmp')
+        localfilename = '.\\tmp\\' + package.downloadUrl.split('/')[-1]
+        urllib.request.urlretrieve(package.downloadUrl, localfilename)
+        LOG.info('File saved as %s', localfilename)
     
-    # Create sha256 checksum and delete file
-    package.sha256 = sha256_checksum(localfilename)
-    LOG.info('Sha256 checksum: %s', package.sha256)
-    LOG.info('Deleting %s', localfilename)
-    os.remove(localfilename)
+        # Create sha256 checksum and delete file
+        package.sha256 = sha256_checksum(localfilename)
+        LOG.info('Sha256 checksum: %s', package.sha256)
+        LOG.info('Deleting %s', localfilename)
+        os.remove(localfilename)
 
-    # Update chocolately package
-    result = patchPackage(package)
+        # Update chocolately package
+        result = patchPackage(package)
 
-    if result == True:
-        chocopush(pkgLanconfig)
-        updatedPackage += 'LANconfig: Version %s', pkgLanconfig.latestVersion
+        if result == True:
+            chocopush(package)
+            updatedPackage += 'LANconfig: Version %s', package.latestVersion
+
 
     # Send email report
     LOG.info('Sending email report')
