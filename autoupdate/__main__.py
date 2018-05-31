@@ -17,7 +17,7 @@ import hashlib
 import subprocess
 
 LOG = None
-
+PUSH = False
 
 # package class
 class chocopkg:
@@ -34,6 +34,8 @@ class chocopkg:
     latestVersion = ''
     downloadUrl = ''
     sha256 = ''
+    packResult = ''
+    pushResult = ''
 
     def setValues(self):
         self.projectDir = '.\\' + self.projectId + '\\'
@@ -56,7 +58,9 @@ class chocopkg:
                 'Release notes-Url: ' + self.releasnotesUrl + '\n' +
                 'Latest version: ' + self.latestVersion + '\n' +
                 'Download URL: ' + self.downloadUrl + '\n' +
-                'Sha256: ' + self.sha256)    
+                'Sha256: ' + self.sha256 + '\n' +
+                'Pack result: ' + self.packResult + '\n' +
+                'Push result: ' + self.pushResult)
 
 
 def setup_custom_logger(name):
@@ -148,7 +152,8 @@ def inplace_change(filename, old_string, new_string):
 def chocopush(pkgObject):
     os.remove(pkgObject.projectDir + '\\*.nupkg')
     result[0] = subprocess.Popen(['choco', 'pack'], cwd=pkgObject.projectDir)
-    result[1] = subprocess.Popen(['choco', 'push', pkgObject.nupkgFile, '--source https://push.chocolatey.org/'], cwd=pkgObject.projectDir)
+    if PUSH == True:
+        result[1] = subprocess.Popen(['choco', 'push', pkgObject.nupkgFile, '--source https://push.chocolatey.org/'], cwd=pkgObject.projectDir)
     return result
 
 
@@ -171,6 +176,9 @@ def gitCommit(message):
 
 
 def sendMessage(messageText, attachedFile):
+    base = os.path.splitext(attachedFile)[0]
+    os.rename(attachedFile, base + ".txt")
+
     key = 'key-65d52cc570230f0f4e25684c2b2b7238'
     sandbox = 'sandbox2c45884527824533b2ccaae8ded609db.mailgun.org'
     recipient = 'm.busche@gmail.com'
@@ -209,7 +217,7 @@ if __name__ == "__main__":
     updatedPackage = ''
 
     # Initialize packages
-    packages = [chocopkg() for i in range(1)]
+    packages = [chocopkg() for i in range(2)]
     packages[0].projectId = 'lanconfig'
     packages[0].vendorUrl = 'https://www.lancom-systems.de/downloads/'
     packages[0].downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
@@ -248,19 +256,24 @@ if __name__ == "__main__":
         result = patchPackage(package)
 
         if result == True:
-            chocopush(package)
+            [package.packResult, package.pushResult] = chocopush(package)
             updatedPackage += 'LANconfig: Version %s', package.latestVersion
+        
+        LOG.debug(package.dump)
 
 
     # Send email report
     LOG.info('Sending email report')
     if not updatedPackage is '':
-        sendMessage('Chocoupdate has found updates for the following packages:\n\n' + 
+        mailResult = sendMessage('Chocoupdate has found updates for the following packages:\n\n' + 
                     updatedPackage + 
                     '\n\nSee attached logfile for details.\n\nSincerly,\nyours Chocoupdate', 
                     r'.\chocoupdate.log')
     else:
-        sendMessage('Chocoupdate has not found new updates.\n\n' +
+        mailResult = sendMessage('Chocoupdate has not found new updates.\n\n' +
                     'See attached logfile for details.\n\nSincerly,\nyours Chocoupdate', 
                     r'.\chocoupdate.log')
     
+    LOG.debug('Message send result: %s', mailResult)
+
+    LOG.info('Goodbye')
