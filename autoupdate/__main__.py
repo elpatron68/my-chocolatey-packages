@@ -95,7 +95,8 @@ def getDownloadUrlVersion(pkgObject):
     # remove LANCOM 'RU'
     version = re.sub(re.compile(r'-RU'), '.', version)
     LOG.debug('Found version information: %s', version)
-    releasnotesUrl = re.findall(re.compile(pkgObject.releasnotesPattern), htmltext)[0]
+    if pkgObject.releasnotesPattern:
+        releasnotesUrl = re.findall(re.compile(pkgObject.releasnotesPattern), htmltext)[0]
     return(downloadUrl, version, releasnotesUrl)
 
 
@@ -151,9 +152,13 @@ def inplace_change(filename, old_string, new_string):
 
 def chocopush(pkgObject):
     os.remove(pkgObject.projectDir + '\\*.nupkg')
+    LOG.info('Packing chocolately package')
     result[0] = subprocess.Popen(['choco', 'pack'], cwd=pkgObject.projectDir)
+    LOG.debug('Pack result: %s', result[0])
     if PUSH == True:
+        LOG.info('Pushing chocolately package')
         result[1] = subprocess.Popen(['choco', 'push', pkgObject.nupkgFile, '--source https://push.chocolatey.org/'], cwd=pkgObject.projectDir)
+        LOG.debug('Push result: %s', result[1])
     return result
 
 
@@ -231,6 +236,14 @@ if __name__ == "__main__":
     packages[1].releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
     packages[1].versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
     packages[1].setValues()
+
+    packages[1].projectId = 'copypathmenu'
+    packages[1].vendorUrl = 'https://www.martinstoeckli.ch/copypathmenu/copypathmenu.html'
+    packages[1].downloadPattern = r'https:\/\/www\.martinstoeckli\.ch\/copypathmenu\/copypathmenu_\d_\d\.msi'
+    # packages[1].releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
+    packages[1].versionPattern = r'\d_\d'
+    packages[1].setValues()
+
 
     for package in packages:
         # Download web page
