@@ -222,7 +222,7 @@ if __name__ == "__main__":
     updatedPackage = ''
 
     # Initialize packages
-    packages = [chocopkg() for i in range(2)]
+    packages = [chocopkg() for i in range(3)]
     packages[0].projectId = 'lanconfig'
     packages[0].vendorUrl = 'https://www.lancom-systems.de/downloads/'
     packages[0].downloadPattern = r'https:\/\/www\.lancom-systems\.de\/fileadmin\/download\/LANtools\/LANconfig-\d{1,3}\.\d{1,3}\.\d{1,4}.*\.exe'
