@@ -237,12 +237,12 @@ if __name__ == "__main__":
     packages[1].versionPattern = r'\d{1,3}\.\d{1,3}\.\d{1,4}-?R?U?\d?'
     packages[1].setValues()
 
-    packages[1].projectId = 'copypathmenu'
-    packages[1].vendorUrl = 'https://www.martinstoeckli.ch/copypathmenu/copypathmenu.html'
-    packages[1].downloadPattern = r'https:\/\/www\.martinstoeckli\.ch\/copypathmenu\/copypathmenu_\d_\d\.msi'
-    # packages[1].releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
-    packages[1].versionPattern = r'\d_\d'
-    packages[1].setValues()
+    packages[2].projectId = 'copypathmenu'
+    packages[2].vendorUrl = 'https://www.martinstoeckli.ch/copypathmenu/copypathmenu.html'
+    packages[2].downloadPattern = r'https:\/\/www\.martinstoeckli\.ch\/copypathmenu\/copypathmenu_\d_\d\.msi'
+    # packages[2].releasnotesPattern = r'https:\/\/www\.lancom-systems\.de\/\/fileadmin\/download\/documentation\/Release_Notes\/RN_LANtools-\d{4,}.+DE.pdf'
+    packages[2].versionPattern = r'\d_\d'
+    packages[2].setValues()
 
 
     for package in packages:
