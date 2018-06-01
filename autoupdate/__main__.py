@@ -257,7 +257,7 @@ if __name__ == "__main__":
 
         if result == True:
             [package.packResult, package.pushResult] = chocopush(package)
-            updatedPackage += 'LANconfig: Version %s', package.latestVersion
+            updatedPackage += package.projectId + ': Version %s', package.latestVersion
         
         LOG.debug(package.dump)
 
