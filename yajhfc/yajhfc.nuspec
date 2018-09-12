@@ -22,48 +22,55 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- This section is about this package, although id and version have ties back to the software -->
     <!-- id is lowercase and if you want a good separator for words, use '-', not '.'. Dots are only acceptable as suffixes for certain types of packages, e.g. .install, .portable, .extension, .template -->
     <!-- If the software is cross-platform, attempt to use the same id as the debian/rpm package(s) if possible. -->
-    <id>lancomvpnclient</id>
+    <id>yajhfc</id>
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>4.10</version>
-    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <version>0.6.2</version>
+    <packageSourceUrl>https://gitlab.com/m-busche/chocolatey-packages</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <!--<owners>__REPLACE_YOUR_NAME__</owners>-->
     <!-- ============================== -->
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>LANCOM Advanced VPN Client [30-days trial] (Install)</title>
-    <authors>LANCOM Systems GmbH</authors>
+    <title>yajhfc (Install)</title>
+    <authors>Jonas Wolz</authors>
     <!-- projectUrl is required for the community feed -->
-    <projectUrl>https://www.lancom-systems.com/products/routers-vpn-gateways/lancom-advanced-vpn-client-windows/</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/lancomvpnclient.png</iconUrl>-->
-    <copyright>LANCOM Systems GmbH</copyright>
+    <projectUrl>http://www.yajhfc.de/</projectUrl>
+    <iconUrl>http://www.yajhfc.de/images/yajhfc-64x64.png</iconUrl>
+    <copyright>2016 Jonas Wolz</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
-    <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
-    <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
+    <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://bitbucket.org/jonaswolz/</projectSourceUrl>
+    <docsUrl>http://www.yajhfc.de/documentation/wiki</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>LANCOM Secure IPSec VPN Network</tags>
-    <summary>The LANCOM Advanced VPN Client for Windows provides users with a secure VPN tunnel to access the company network. 30-days trial version.</summary>
+    <tags>yajhfc Hylafax Client Fax</tags>
+    <summary>YajHFC (Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java.</summary>
     <description>
-## Maximum data security
+# Yet Another Hylafax Client
 
-Equipped with a stateful inspection firewall, the LANCOM Advanced VPN Client automatically detects secure and unsecure networks for protected communication at all times. Together with other 
-security features such as the support of all current IPSec protocols, digital certificates, and many more, the client ensures that all data are securely transmitted at all times.
+## Features
+- Faxing documents in PostScript, PDF, JPEG, PNG, TIFF, GIF and HTML format
+- Polling faxes
+- Support for generating cover pages from templates (in PostScript, HTML and (with a Plugin) XSL:FO or ODT format)
+- Viewing sent and received faxes
+- Phone book (entries can optionally be read from SQL databases or LDAP directories)
+- Visible table columns may be selected in a dialog
+- Runs under Windows, Linux and Mac OS X (and probably other platforms if a suitable JRE is available)
+- Supports ten languages: Chinese, English, French, German, Greek, Italian, Polish, Russian, Spanish and Turkish
 
-## Full cost control
-
-The Budget Manager integrated into the Mobile Network Dialer allows you to set time and volume quotas for full cost control. What's more, the option “No roaming allowed” disables data roaming to avoid additional costs. Also included: An automatic connection control with a range of cost-control functions provides a constant overview of charges, online time, and transfer volumes.
-
-## Fast and easy configuration thanks to the Setup Wizard and "1-Click-VPN"
-
-The integrated Setup Wizard supports the user with fast and easy VPN configuration. Automatic media detection saves you having to define the connection type manually — it is selected automatically depending on the available medium. Once installed, the VPN connection is established intuitively with a single click.
+## Requirements
+- A installed Java 5.0 (or higher) JRE (Java 6 or higher recommended)
+- A running HylaFAX server in your network (should be obvious ;-) )
+- A program to view faxes (optional, also see the FAQ)
+- A PostScript viewer (optional, e.g. Ghostview)
+- GhostScript (optional)
+- tiff2pdf from the libtiff utilities package (optional)
     </description>
-    <releaseNotes>https://www.lancom-systems.com/download/LC-VPN-Client-Advanced/RN_Advanced-VPN-Client-410-Rel_EN.pdf</releaseNotes>
+    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!-- =============================== -->      
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
