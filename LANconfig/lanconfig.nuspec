@@ -38,7 +38,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>LANCOM Systems GmbH</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://www.lancom-systems.de/</projectUrl>
-    <iconUrl>https://i.imgur.com/FttC8AJ.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/elpatron68/my-chocolatey-packages/2833e570/LANconfig/lanconf_1000-0.png</iconUrl>
     <copyright>2018 LANCOM Systems GmbH</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
