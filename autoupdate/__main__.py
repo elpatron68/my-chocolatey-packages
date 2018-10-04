@@ -184,8 +184,8 @@ def sendMessage(messageText, attachedFile):
     base = os.path.splitext(attachedFile)[0]
     os.rename(attachedFile, base + ".txt")
 
-    key = 'key-65d52cc570230f0f4e25684c2b2b7238'
-    sandbox = 'sandbox2c45884527824533b2ccaae8ded609db.mailgun.org'
+    key = 'key-<put mailgun api key here>'
+    sandbox = 'sandbox<put sandbox here>.mailgun.org'
     recipient = 'm.busche@gmail.com'
     request_url = 'https://api.mailgun.net/v2/{0}/messages'.format(sandbox)
 
