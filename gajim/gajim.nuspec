@@ -47,7 +47,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <docsUrl>https://dev.gajim.org/gajim/gajim/wikis/home?lang=en</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <bugTrackerUrl>https://dev.gajim.org/gajim/gajim/issues</bugTrackerUrl>
-    <tags>gajim XMPP messenger</tags>
+    <tags>gajim XMPP messenger OMEMO</tags>
     <summary>>Full featured and easy to use Jabber/XMPP client</summary>
     <description>
 Gajim aims to be an easy to use and fully-featured XMPP client. It is open source and released under the GNU General Public License (GPL). 
