@@ -34,7 +34,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>Alexander Nottelmann</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://streamwriter.org/en/</projectUrl>
-    <iconUrl>https://i.imgur.com/87DoxiX.png</iconUrl>
+    <iconUrl>https://i.imgur.com/jqvadDN.png</iconUrl>
     <copyright>(c) 2010-2018 Alexander Nottelmann et al.</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl> -->
