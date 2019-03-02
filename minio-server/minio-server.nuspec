@@ -48,7 +48,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
     <tags>minio-server distributed file storage server</tags>
-    <summary>__REPLACE__</summary>
+    <summary>Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0</summary>
     <description>
     # Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0
     

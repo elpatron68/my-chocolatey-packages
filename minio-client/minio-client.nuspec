@@ -37,18 +37,40 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <title>minio-client</title>
     <authors>Minio, Inc.</authors>
     <projectUrl>https://minio.io/</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/elpatron68/my-chocolatey-packages@ab673a0f68dc59ca42ade943bfa2c4feb588a72c/minio-server/ms-active.png</iconUrl>
-    <!-- <copyright>Year Software Vendor</copyright> -->
+    <iconUrl>https://cdn.jsdelivr.net/gh/elpatron68/my-chocolatey-packages@7b96fd065a786b51ee7d5bdb7e14c28964606101/minio-client/mc-active.png</iconUrl>
+    <copyright>2014-2019 Minio, Inc.</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
-    <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
-    <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
+    <licenseUrl>https://github.com/minio/mc/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/minio/mc</projectSourceUrl>
+    <docsUrl>https://docs.minio.io/</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>minio-client SPACE_SEPARATED</tags>
-    <summary>__REPLACE__</summary>
-    <description>__REPLACE__MarkDown_Okay </description>
+    <tags>minio-server distributed file storage client</tags>
+    <summary>Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0</summary>
+        <description>
+    # Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0
+    
+    ## Amazon S3 Compatible
+    Amazon S3 API is the de facto standard for object storage. Minio implements Amazon S3 v2/v4 API. Use Minio SDK, Minio Client, AWS SDK and AWS CLI to access Minio server.
+
+    ## Data Protection
+    Minio protects data against hardware failures using erasure code and bitrot detection. You may lose up to half the number of drives and still recover from it. Data protection code is accelerated using SIMD instructions on x64 and ARM CPUs.
+
+    ## Highly Available
+    Minio server can tolerate up to (N/2)-1 node failures in a distributed setup. In addition, you may configure Minio server to continuously mirror data between Minio and any Amazon S3 compatible server.
+
+    ## Lambda Compute
+    Minio server triggers Lambda functions through its AWS SNS/SQS compatible event notification service. Supported targets are message queues such as Kafka, NATS, AMQP, MQTT, Webhooks, and databases such as Elasticsearch, Redis, Postgres, and MySQL. Thumbnail generation, OCR and audit compliance are good examples of lambda computing.
+
+    ## Encryption and Tamper-Proof
+    Minio provides confidentiality, integrity and authenticity assurances for encrypted data with negligible performance overhead. Both server side and client side encryption are supported using AES-256-GCM, ChaCha20-Poly1305 and AES-CBC. Encrypted objects are tamper-proofed with AEAD server side encryption.
+
+    ## Pluggable Storage Backend
+    In addition to Minio's own filesystem and erasure code backends for DAS and JBODs, external storage backends such as NAS, Google Cloud Storage, and Azure Blob Storage are supported as well.
+    
+    </description>
+
     <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!-- =============================== -->      
 
