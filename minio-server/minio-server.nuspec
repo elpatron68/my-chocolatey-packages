@@ -22,11 +22,11 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- This section is about this package, although id and version have ties back to the software -->
     <!-- id is lowercase and if you want a good separator for words, use '-', not '.'. Dots are only acceptable as suffixes for certain types of packages, e.g. .install, .portable, .extension, .template -->
     <!-- If the software is cross-platform, attempt to use the same id as the debian/rpm package(s) if possible. -->
-    <id>usbdlm</id>
+    <id>minio-server</id>
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>5.4.2</version>
+    <version>2019-02-26</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <owners>elpatron</owners>
@@ -34,27 +34,22 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>usbdlm (Install)</title>
-    <authors>Uwe Sieber</authors>
+    <title>minio-server (Install)</title>
+    <authors>Minio, Inc.</authors>
     <!-- projectUrl is required for the community feed -->
-    <projectUrl>https://www.uwe-sieber.de/usbdlm_e.html</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/usbdlm.png</iconUrl>-->
-    <copyright>Uwe Sieber</copyright>
+    <projectUrl>https://minio.io/</projectUrl>
+    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/minio-server.png</iconUrl>-->
+    <!-- <copyright>Year Software Vendor</copyright> -->
     <!-- If there is a license Url available, it is required for the community feed -->
-    <licenseUrl>https://www.uwe-sieber.de/usbdlm_e.html#prices</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
     <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <docsUrl>https://www.uwe-sieber.de/usbdlm_e.html#config</docsUrl>
+    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>usbdlm removable drive letter system tool</tags>
-    <summary>USBDLM is a Windows service that gives control over Windows' drive letter assignment for USB drives</summary>
-    <description>
-    USBDLM is a Windows service that gives control over Windows' drive letter assignment for USB drives. Running as service makes it independent of the logged on user's privileges, so there is no need to give the users the privilege to change drive letters.
-    It automatically solves conflicts between USB drives and network or subst drives of the currently logged on user.
-    Furthermore you can define new default letters for USB drives and much more.
-    It works on Windows XP to Windows 10. 
-  </description>
+    <tags>minio-server SPACE_SEPARATED</tags>
+    <summary>__REPLACE__</summary>
+    <description>__REPLACE__MarkDown_Okay </description>
     <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!-- =============================== -->      
 
