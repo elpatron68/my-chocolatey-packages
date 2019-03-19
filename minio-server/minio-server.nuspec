@@ -3,10 +3,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>minio-server</id>
-    <version>2019.03.06</version>
+    <version>2019.03.13</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <owners>elpatron</owners>
-    <title>Minio private cloud storage server</title>
+    <title>Minio Server</title>
     <authors>Minio, Inc.</authors>
     <projectUrl>https://minio.io/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/elpatron68/my-chocolatey-packages@ab673a0f68dc59ca42ade943bfa2c4feb588a72c/minio-server/ms-active.png</iconUrl>
