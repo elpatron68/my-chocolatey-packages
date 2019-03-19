@@ -22,12 +22,11 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- This section is about this package, although id and version have ties back to the software -->
     <!-- id is lowercase and if you want a good separator for words, use '-', not '.'. Dots are only acceptable as suffixes for certain types of packages, e.g. .install, .portable, .extension, .template -->
     <!-- If the software is cross-platform, attempt to use the same id as the debian/rpm package(s) if possible. -->
-    <id>usbdlm</id>
+    <id>minio-server</id>
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>5.4.2</version>
-    <version>5.4.3</version>
+    <version>2019.02.26</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <owners>elpatron</owners>
@@ -35,25 +34,43 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>usbdlm (Install)</title>
-    <authors>Uwe Sieber</authors>
+    <title>minio-server</title>
+    <authors>Minio, Inc.</authors>
     <!-- projectUrl is required for the community feed -->
-    <projectUrl>https://www.uwe-sieber.de/usbdlm_e.html</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/usbdlm.png</iconUrl>-->
-    <copyright>Uwe Sieber</copyright>
+    <projectUrl>https://minio.io/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/elpatron68/my-chocolatey-packages@ab673a0f68dc59ca42ade943bfa2c4feb588a72c/minio-server/ms-active.png</iconUrl>
+    <copyright>2014-2019 Minio, Inc.</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
-    <licenseUrl>https://www.uwe-sieber.de/usbdlm_e.html#prices</licenseUrl>
+    <licenseUrl>https://github.com/minio/minio/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <docsUrl>https://www.uwe-sieber.de/usbdlm_e.html#config</docsUrl>
-    <tags>usbdlm removable drive letter system tool</tags>
-    <summary>USBDLM is a Windows service that gives control over Windows' drive letter assignment for USB drives</summary>
+    <projectSourceUrl>https://github.com/minio/minio</projectSourceUrl>
+    <docsUrl>https://docs.minio.io/</docsUrl>
+    <!--<mailingListUrl></mailingListUrl>-->
+    <!--<bugTrackerUrl></bugTrackerUrl>-->
+    <tags>minio-server distributed file storage server</tags>
+    <summary>Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0</summary>
     <description>
-    USBDLM is a Windows service that gives control over Windows' drive letter assignment for USB drives. Running as service makes it independent of the logged on user's privileges, so there is no need to give the users the privilege to change drive letters.
-    It automatically solves conflicts between USB drives and network or subst drives of the currently logged on user.
-    Furthermore you can define new default letters for USB drives and much more.
-    It works on Windows XP to Windows 10. 
-  </description>
+    # Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0
+    
+    ## Amazon S3 Compatible
+    Amazon S3 API is the de facto standard for object storage. Minio implements Amazon S3 v2/v4 API. Use Minio SDK, Minio Client, AWS SDK and AWS CLI to access Minio server.
+
+    ## Data Protection
+    Minio protects data against hardware failures using erasure code and bitrot detection. You may lose up to half the number of drives and still recover from it. Data protection code is accelerated using SIMD instructions on x64 and ARM CPUs.
+
+    ## Highly Available
+    Minio server can tolerate up to (N/2)-1 node failures in a distributed setup. In addition, you may configure Minio server to continuously mirror data between Minio and any Amazon S3 compatible server.
+
+    ## Lambda Compute
+    Minio server triggers Lambda functions through its AWS SNS/SQS compatible event notification service. Supported targets are message queues such as Kafka, NATS, AMQP, MQTT, Webhooks, and databases such as Elasticsearch, Redis, Postgres, and MySQL. Thumbnail generation, OCR and audit compliance are good examples of lambda computing.
+
+    ## Encryption and Tamper-Proof
+    Minio provides confidentiality, integrity and authenticity assurances for encrypted data with negligible performance overhead. Both server side and client side encryption are supported using AES-256-GCM, ChaCha20-Poly1305 and AES-CBC. Encrypted objects are tamper-proofed with AEAD server side encryption.
+
+    ## Pluggable Storage Backend
+    In addition to Minio's own filesystem and erasure code backends for DAS and JBODs, external storage backends such as NAS, Google Cloud Storage, and Azure Blob Storage are supported as well.
+    
+    </description>
     <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!-- =============================== -->      
 
