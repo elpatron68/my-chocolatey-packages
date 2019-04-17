@@ -1,11 +1,9 @@
-﻿
-Note: Include this file if including binaries you have the right to distribute. 
-Otherwise delete. this file.
-
-===DELETE ABOVE THIS LINE AND THIS LINE===
-
-From: <insert applicable license url here>
+﻿From: Installer
 
 LICENSE
 
-<Insert License Here>
+License Terms and Conditions
+Last modified: 2017-05-18
+1.	“RaiDrive Standard Edition” can be used and distributed by anyone without restrictions. However, when you resell the program itself, you must acquire a separate right.
+2.	Anonymously collect data for program improvement. The data we collect does not contain any personally identifiable information and is not used for any purpose other than program improvement. Program exception data is sent to OpenBoxLab, and data for statistics generation is sent to Google Analytics.
+3.	Other terms of the license agreement are subject to the laws of the Republic of Korea.

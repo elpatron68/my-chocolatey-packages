@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>minio-client</id>
-    <version>2019.03.28</version>
+    <version>2019.04.17</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <owners>elpatron</owners>
     <title>Minio Client</title>
@@ -14,29 +14,39 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/minio/mc</projectSourceUrl>
     <docsUrl>https://docs.minio.io/</docsUrl>
-    <tags>minio-server distributed file storage client</tags>
-    <summary>Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0</summary>
+    <tags>minio-client distributed file storage client</tags>
+    <summary>MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, cp, mirror, diff, find etc.</summary>
         <description>
-    # Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0
-    
-    ## Amazon S3 Compatible
-    Amazon S3 API is the de facto standard for object storage. Minio implements Amazon S3 v2/v4 API. Use Minio SDK, Minio Client, AWS SDK and AWS CLI to access Minio server.
+# Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0
 
-    ## Data Protection
-    Minio protects data against hardware failures using erasure code and bitrot detection. You may lose up to half the number of drives and still recover from it. Data protection code is accelerated using SIMD instructions on x64 and ARM CPUs.
+ MinIO Client supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).
 
-    ## Highly Available
-    Minio server can tolerate up to (N/2)-1 node failures in a distributed setup. In addition, you may configure Minio server to continuously mirror data between Minio and any Amazon S3 compatible server.
+List of featured commands
 
-    ## Lambda Compute
-    Minio server triggers Lambda functions through its AWS SNS/SQS compatible event notification service. Supported targets are message queues such as Kafka, NATS, AMQP, MQTT, Webhooks, and databases such as Elasticsearch, Redis, Postgres, and MySQL. Thumbnail generation, OCR and audit compliance are good examples of lambda computing.
-
-    ## Encryption and Tamper-Proof
-    Minio provides confidentiality, integrity and authenticity assurances for encrypted data with negligible performance overhead. Both server side and client side encryption are supported using AES-256-GCM, ChaCha20-Poly1305 and AES-CBC. Encrypted objects are tamper-proofed with AEAD server side encryption.
-
-    ## Pluggable Storage Backend
-    In addition to Minio's own filesystem and erasure code backends for DAS and JBODs, external storage backends such as NAS, Google Cloud Storage, and Azure Blob Storage are supported as well.
-    
+ ```
+ls       list buckets and objects
+mb       make a bucket
+rb       remove a bucket
+cat      display object contents
+head     display first 'n' lines of an object
+pipe     stream STDIN to an object
+share    generate URL for temporary access to an object
+cp       copy objects
+mirror   synchronize objects to a remote site
+find     search for objects
+sql      run sql queries on objects
+stat     stat contents of objects
+diff     list differences in object name, size, and date between buckets
+rm       remove objects
+event    manage object notifications
+watch    watch for object events
+policy   manage anonymous access to objects
+admin    manage MinIO servers
+session  manage saved sessions for cp command
+config   manage mc configuration file
+update   check for a new software update
+version  print version info   
+```
     </description>
 
   </metadata>
