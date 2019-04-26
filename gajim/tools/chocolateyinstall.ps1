@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
-$url        = 'https://gajim.org/downloads/1.1/gajim-1.1.2-32bits-1.exe'
-$url64      = 'https://gajim.org/downloads/1.1/gajim-1.1.2-64bits-1.exe'
+$url        = 'https://gajim.org/downloads/1.1/gajim-1.1.3-32bits-1.exe'
+$url64      = 'https://gajim.org/downloads/1.1/gajim-1.1.3-64bits-1.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -11,9 +11,9 @@ $packageArgs = @{
 
   softwareName  = 'gajim*'
 
-  checksum      = 'C0A5883D5B06B427B5B8B63E5920B79C6332795F6E265B116A895E50B83F33E2'
+  checksum      = '934FE01FC3391A699C12ACA09872176A371236F07FFD0D39C62AC7D247546C39'
   checksumType  = 'sha256'
-  checksum64    = '4249474573E96F08C2B351326F410DCC8B55A8EEA81D791241A9A02D49C3D3A4'
+  checksum64    = '1921A5EC774BC4EE5F20752E39FA1E00E1A87E7233C3CFEFC07B9C497C3E34E6'
   checksumType64= 'sha256'
 
   silentArgs    = "/S"
