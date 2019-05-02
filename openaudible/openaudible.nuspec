@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>openaudible</id>
+    <version>1.5.0</version>
+    <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
+    <owners>elpatron</owners>
+    <title>openaudible (Install)</title>
+    <authors>OpenAudible</authors>
+    <projectUrl>https://openaudible.org/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/openaudible/openaudible@82033f93861774a38c2874273bc2ae60d7222546/src/main/resources/128x128.png</iconUrl>
+    <copyright>2019 openaudible</copyright>
+    <licenseUrl>https://github.com/openaudible/openaudible/blob/master/LICENSE.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/openaudible/openaudible</projectSourceUrl>
+    <docsUrl>https://openaudible.org/#documentation</docsUrl>
+    <bugTrackerUrl>https://github.com/openaudible/openaudible/issues</bugTrackerUrl>
+    <tags>openaudible download audible mp3</tags>
+    <summary>An open-source cross-platform audible audiobook manager. With over 200 stars by github developers, OpenAudible is the trusted audio book content manager.</summary>
+    <description>
+Download, view, convert to MP3, and manage all your audible.com content with our easy-to-use desktop application.
+
+See all your Audible books in one location, on all your Mac, Windows, and Linux computers. Automatically organize your books as an HTML library.
+
+For audible regions: US, UK, DE, FR, AU, JP, CA
+    </description>
+  </metadata>
+  <files>
+    <!-- this section controls what actually gets packaged into the Chocolatey package -->
+    <file src="tools\**" target="tools" />
+    <!--Building from Linux? You may need this instead: <file src="tools/**" target="tools" />-->
+  </files>
+</package>
