@@ -19,7 +19,7 @@
         <description>
 # Minio is a distributed object storage server, written in Go and open sourced under Apache License Version 2.0
 
- MinIO Client supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).
+MinIO Client supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).
 
 List of featured commands
 
