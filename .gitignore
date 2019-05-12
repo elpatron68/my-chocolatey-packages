@@ -4,3 +4,4 @@ chocoupdate.log
 __pycache__
 tmp
 *.exe
+openaudible/start_update.cmd

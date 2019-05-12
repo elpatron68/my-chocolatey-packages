@@ -67,4 +67,4 @@ if StrictVersion(latestversion) > StrictVersion(chocoversion):
     print('Git commit')
     subprocess.call(['git.exe', 'commit', '-m "Openaudible automatic update"'], cwd='./openaudible')
 else:
-    print('No update for openaudible available')
+    print('No update available')
