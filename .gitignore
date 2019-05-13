@@ -5,3 +5,4 @@ __pycache__
 tmp
 *.exe
 openaudible/start_update.cmd
+start_update.cmd

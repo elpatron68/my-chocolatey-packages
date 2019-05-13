@@ -31,7 +31,6 @@ data = json.loads(data)
 dlurl=data['download_dir'] + data['platforms']['win']['file']
 latestversion=data['version']
 print('Latest version from JSON: ' + latestversion)
-print('Download URL: ' + dlurl)
 
 # Get last committed chocolatey version from nuspec
 obj = untangle.parse(nuspecfile)
@@ -41,6 +40,7 @@ print('Chocolatey Version: ' + chocoversion)
 if StrictVersion(latestversion) > StrictVersion(chocoversion):
     print('We have an update')
     print('Downloading file')
+    print('Download URL: ' + dlurl)
     urllib.request.urlretrieve(dlurl, tmpfile)
     print('Calculating sha256 checksum')
     shachecksum = sha256sum(tmpfile)

@@ -44,7 +44,6 @@ for row in table.find_all('tr'):
             break
 
 print('Latest version from minio download page: ' + latestversion)
-print('Download URL: ' + dlurl)
 
 # Get last committed chocolatey version from nuspec
 obj = untangle.parse(nuspecfile)
@@ -54,6 +53,7 @@ print('Chocolatey Version: ' + mcvercion)
 if StrictVersion(latestversion) > StrictVersion(mcvercion):
     print('We have an update')
     print('Downloading file')
+    print('Download URL: ' + dlurl)
     urllib.request.urlretrieve(dlurl, tmpfile)
     print('Calculating sha256 checksum')
     shachecksum = sha256sum(tmpfile)
