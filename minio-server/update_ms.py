@@ -20,15 +20,15 @@ def sha256sum(filename):
             h.update(mv[:n])
     return h.hexdigest()
 
-nuspecfile = './minio-client/minio-client.nuspec'
-ps1file = './minio-client/tools/chocolateyinstall.ps1'
-tmpfile = './minio-client/tmp.file'
-dlurl = 'https://dl.minio.io/client/mc/release/windows-amd64/mc.exe'
+nuspecfile = './minio-server/minio-server.nuspec'
+ps1file = './minio-server/tools/chocolateyinstall.ps1'
+tmpfile = './minio-server/tmp.file'
+dlurl = 'https://dl.minio.io/server/minio/release/windows-amd64/minio.exe'
 
-print('Searching for minio-client update')
+print('Searching for minio-server update')
 
 # Get latest version information an download url from JSON
-url = 'https://dl.minio.io/client/mc/release/windows-amd64/'
+url = 'https://dl.minio.io/server/minio/release/windows-amd64/'
 data = requests.get(url).text
 soup = BeautifulSoup(data, 'lxml')
 table = soup.find_all('table')[0] 
@@ -74,11 +74,11 @@ if StrictVersion(latestversion) > StrictVersion(mcvercion):
     with open(ps1file, 'w') as f:
         f.write(content_new)            
     print('Chocolatey pack')
-    subprocess.call(['choco.exe', 'pack'], cwd='./minio-client')
+    subprocess.call(['choco.exe', 'pack'], cwd='./minio-server')
     print('Chocolatey push')
-    subprocess.call(['choco.exe', 'push'], cwd='./minio-client')
+    subprocess.call(['choco.exe', 'push'], cwd='./minio-server')
     print('Git commit')
-    subprocess.call(['git.exe', 'commit', '-m "Minio Client automatic update"'], cwd='./minio-client')
-    subprocess.call(['git.exe', 'push'], cwd='./minio-client')
+    subprocess.call(['git.exe', 'commit', '-m "Minop Server automatic update"'], cwd='./minio-server')
+    subprocess.call(['git.exe', 'push'], cwd='./minio-server')
 else:
     print('No update available')
