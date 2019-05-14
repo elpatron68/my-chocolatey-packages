@@ -78,7 +78,7 @@ if StrictVersion(latestversion) > StrictVersion(mcvercion):
     print('Chocolatey push')
     subprocess.call(['choco.exe', 'push'], cwd='./minio-server')
     print('Git commit')
-    subprocess.call(['git.exe', 'commit', '-m "Minop Server automatic update"'], cwd='./minio-server')
+    subprocess.call(['git.exe', 'commit', '-m "Mino server automatic update"', "--author=<autoupdate>"], cwd='./minio-server')
     subprocess.call(['git.exe', 'push'], cwd='./minio-server')
 else:
     print('No update available')
