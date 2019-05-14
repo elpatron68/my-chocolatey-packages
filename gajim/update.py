@@ -3,7 +3,6 @@ import re
 import subprocess
 import requests
 import urllib.request
-import json
 import hashlib
 import untangle
 from distutils.version import StrictVersion
@@ -24,7 +23,7 @@ tmpfile = './gajim/tmp.file'
 
 print('Searching for minio-server update')
 
-# Get latest version information an download url from JSON
+# Get latest version information an download url from HTML
 url = 'https://gajim.org/downloads.php?lang=en'
 data = requests.get(url).text
 html = re.findall(r'Latest\s*version\s*of\s*Gajim\s*is\s*<strong>\d*\.\d*\.\d*<\/strong>', data)[0]
