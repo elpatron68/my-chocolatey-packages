@@ -1,4 +1,3 @@
-import pandas as pd
 from bs4 import BeautifulSoup
 import os
 import re
@@ -27,7 +26,7 @@ dlurl = 'https://dl.minio.io/client/mc/release/windows-amd64/mc.exe'
 
 print('Searching for minio-client update')
 
-# Get latest version information an download url from JSON
+# Get latest version information an download url from HTML
 url = 'https://dl.minio.io/client/mc/release/windows-amd64/'
 data = requests.get(url).text
 soup = BeautifulSoup(data, 'lxml')
