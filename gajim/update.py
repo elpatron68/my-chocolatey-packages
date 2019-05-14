@@ -21,14 +21,14 @@ nuspecfile = './gajim/gajim.nuspec'
 ps1file = './gajim/tools/chocolateyinstall.ps1'
 tmpfile = './gajim/tmp.file'
 
-print('Searching for minio-server update')
+print('Searching for Gajim update')
 
 # Get latest version information an download url from HTML
 url = 'https://gajim.org/downloads.php?lang=en'
 data = requests.get(url).text
 html = re.findall(r'Latest\s*version\s*of\s*Gajim\s*is\s*<strong>\d*\.\d*\.\d*<\/strong>', data)[0]
 latestversion = re.findall(r'\d*\.\d*\.\d*', html)[0]
-print('Latest version from minio download page: ' + latestversion)
+print('Latest version from Gajim download page: ' + latestversion)
 
 # Get last committed chocolatey version from nuspec
 obj = untangle.parse(nuspecfile)
