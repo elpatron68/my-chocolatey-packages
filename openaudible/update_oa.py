@@ -53,7 +53,7 @@ if StrictVersion(latestversion) > StrictVersion(chocoversion):
     print('Writing new ' + nuspecfile)
     with open(nuspecfile, 'w') as f:
         f.write(content_new)            
-    print('Replacing checksum in ' + ps1file)
+    print('Replacing checksum64 and url64 in ' + ps1file)
     with open(ps1file, 'r') as f:
         content = f.read()
         content_new = re.sub(pattern="checksum64\s*=\s*'.*'", repl="checksum64    = '" + sha256sum + "'", string=content).sub(pattern="url64\s*=\s*'.*'", repl="$url64      = '" + dlurl + "'", string=content)
