@@ -37,7 +37,7 @@ print('Chocolatey Version: ' + gajimversion)
 
 if StrictVersion(latestversion) > StrictVersion(gajimversion):
     print('We have an update')
-    html = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-32bits.*.exe', data)
+    html = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-32bits.*\.exe', data)
     dlurl32 = 'https://gajim.org/' + html
     print('Downloading 32 bit file')
     print('Download URL: ' + dlurl32)
@@ -46,7 +46,7 @@ if StrictVersion(latestversion) > StrictVersion(gajimversion):
     shachecksum32 = sha256sum(tmpfile)
     print('Deleting downloaded file')
     os.remove(tmpfile)
-    html = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-64bits.*.exe', data)
+    html = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-64bits.*\.exe', data)
     dlurl64 = 'https://gajim.org/' + html
     print('Downloading 64 bit file')
     print('Download URL: ' + dlurl64)
