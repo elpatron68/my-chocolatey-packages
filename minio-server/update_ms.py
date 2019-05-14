@@ -69,7 +69,7 @@ if StrictVersion(latestversion) > StrictVersion(mcvercion):
     print('Replacing checksum in ' + ps1file)
     with open(ps1file, 'r') as f:
         content = f.read()
-        content_new = re.sub(pattern="checksum64\s*=\s*'.*'", repl="checksum64    = '" + sha256sum + "'", string=content)
+        content_new = re.sub(pattern="checksum64\s*=\s*'.*'", repl="checksum64    = '" + shachecksum + "'", string=content)
     print('Writing new ' + ps1file)
     with open(ps1file, 'w') as f:
         f.write(content_new)            

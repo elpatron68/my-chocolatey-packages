@@ -56,7 +56,7 @@ if StrictVersion(latestversion) > StrictVersion(chocoversion):
     print('Replacing checksum64 and url64 in ' + ps1file)
     with open(ps1file, 'r') as f:
         content = f.read()
-        content_new = re.sub(pattern="checksum64\s*=\s*'.*'", repl="checksum64    = '" + sha256sum + "'", string=content).sub(pattern="url64\s*=\s*'.*'", repl="$url64      = '" + dlurl + "'", string=content)
+        content_new = re.sub(pattern="checksum64\s*=\s*'.*'", repl="checksum64    = '" + shachecksum + "'", string=content).sub(pattern="url64\s*=\s*'.*'", repl="$url64      = '" + dlurl + "'", string=content)
     print('Writing new ' + ps1file)
     with open(ps1file, 'w') as f:
         f.write(content_new)            
