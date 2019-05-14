@@ -65,7 +65,7 @@ if StrictVersion(latestversion) > StrictVersion(chocoversion):
     print('Chocolatey push')
     subprocess.call(['choco.exe', 'push'], cwd='./openaudible')
     print('Git commit')
-    subprocess.call(['git.exe', 'commit', '-m "Openaudible automatic update"'], cwd='./openaudible')
+    subprocess.call(['git.exe', 'commit', '-m "Openaudible automatic update"', "--author=<autoupdate>"], cwd='./openaudible')
     subprocess.call(['git.exe', 'push'], cwd='./openaudible')
 else:
     print('No update available')
