@@ -8,7 +8,7 @@ PATH = '.\\openaudible'
 NUSPEC_FILE = PATH + '\\openaudible.nuspec'
 PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
 
-print('Searching for minio-server update')
+print('Searching for openaudible update')
 
 # Get latest version information an download url from JSON
 url = 'https://openaudible.org/swt_version.json'
