@@ -50,34 +50,42 @@ mcvercion = obj.package.metadata.version.cdata
 print('Chocolatey Version: ' + mcvercion)
 
 if StrictVersion(latestversion) > StrictVersion(mcvercion):
+    if os.path.exists('./minio-server/*.nupkg'):        
+        print('Deleting old *.nupgk file(s)')
+        for f in os.listdir('./minio-server/'):
+            if re.search('*.nupkg', f):
+                os.remove(os.path.join('./minio-server/', f))
     print('We have an update')
     print('Downloading file')
     print('Download URL: ' + dlurl)
     urllib.request.urlretrieve(dlurl, tmpfile)
     print('Calculating sha256 checksum')
     shachecksum = sha256sum(tmpfile)
+    print('New checksum: ' + shachecksum)
     print('Deleting downloaded file')
     os.remove(tmpfile)
     print('Replacing version in ' + nuspecfile)
-    with open(nuspecfile, 'r') as f:
+    with open(nuspecfile, 'r', encoding="utf8") as f:
         content = f.read()
-        content_new = re.sub(pattern="<version>\d\.\d\.\d</version>", repl="<version>" + latestversion + "</version>", string=content)
+        regex = re.compile(r'<version>\d*\.\d*\.\d*</version>', re.IGNORECASE)
+        content_new = regex.sub("<version>" + latestversion + "</version>", content)
     print('Writing new ' + nuspecfile)
-    with open(nuspecfile, 'w') as f:
+    with open(nuspecfile, 'w', encoding="utf8") as f:
         f.write(content_new)            
     print('Replacing checksum in ' + ps1file)
-    with open(ps1file, 'r') as f:
+    with open(ps1file, 'r', encoding="utf8") as f:
         content = f.read()
-        content_new = re.sub(pattern="checksum64\s*=\s*'.*'", repl="checksum64    = '" + shachecksum + "'", string=content)
+        regex = re.compile(r"checksum64\s*=\s*'.*'", re.IGNORECASE)
+        content_new = regex.sub("checksum64    = '" + shachecksum + "'", content)
     print('Writing new ' + ps1file)
-    with open(ps1file, 'w') as f:
+    with open(ps1file, 'w', encoding="utf8") as f:
         f.write(content_new)            
     print('Chocolatey pack')
     subprocess.call(['choco.exe', 'pack'], cwd='./minio-server')
     print('Chocolatey push')
     subprocess.call(['choco.exe', 'push'], cwd='./minio-server')
     print('Git commit')
-    subprocess.call(['git.exe', 'commit', '-m "Mino server automatic update"', "--author=<autoupdate>"], cwd='./minio-server')
+    subprocess.call(['git.exe', 'commit', '-m "Mino server automatic update"'], cwd='./minio-server')
     subprocess.call(['git.exe', 'push'], cwd='./minio-server')
 else:
     print('No update available')
