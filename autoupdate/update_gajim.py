@@ -1,6 +1,5 @@
 import re
 import requests
-import urllib.request
 import json
 import choco
 from distutils.version import StrictVersion
