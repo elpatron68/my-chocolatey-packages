@@ -28,9 +28,9 @@ if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     url = 'https://gajim.org/downloads.php?lang=en'
     data = requests.get(url).text
     suburl64 = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-64bits.*\.exe', data)
-    download_url64 = 'https://gajim.org/' + suburl
+    download_url64 = 'https://gajim.org/' + suburl64
     suburl32 = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-32bits.*\.exe', data)
-    download_url32 = 'https://gajim.org/' + suburl
+    download_url32 = 'https://gajim.org/' + suburl32
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
 else:
     print('No update available')
