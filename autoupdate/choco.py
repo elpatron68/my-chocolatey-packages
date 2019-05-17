@@ -58,13 +58,13 @@ def update_ps1_file(ps1_file, shachecksum, url, x86=False, x64=False):
             regex = re.compile(r"checksum64\s*=\s*'.*'", re.IGNORECASE)
             content_new1 = regex.sub("checksum64    = '" + shachecksum + "'", content)
             regex = re.compile(r"\$url64\s*=\s*'.*'", re.IGNORECASE)
-            content_new = regex.sub("url64       = '" + url + "'", content_new1)
+            content_new = regex.sub("$url64      = '" + url + "'", content_new1)
         elif x86 == True:
             print('Platform: x86 / any')
             regex = re.compile(r"checksum\s*=\s*'.*'", re.IGNORECASE)
             content_new1 = regex.sub("checksum      = '" + shachecksum + "'", content)
             regex = re.compile(r"\$url\s*=\s*'.*'", re.IGNORECASE)
-            content_new = regex.sub("url         = '" + url + "'", content_new1)
+            content_new = regex.sub("$url        = '" + url + "'", content_new1)
     if x86 == True or x64 == True:
         print('Writing new ' + ps1_file)
         with open(ps1_file, 'w', encoding="utf8") as f:

@@ -26,7 +26,7 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     print('Download URL: ' + download_url)
-    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url)
+    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', download_url)
 else:
     print('No update available')
 

@@ -10,7 +10,7 @@ $packageArgs = @{
   
   softwareName  = 'LANconfig*'
 
-  checksum      = '1F43D5B0BF7856A91292F6483262D7ABE23025C9A6465DA3A33E89B85D4A6AE8'
+  checksum      = '1f43d5b0bf7856a91292f6483262d7abe23025c9a6465da3a33e89b85d4a6ae8'
   checksumType  = 'sha256'
   
   silentArgs    = "/params:/silent"
