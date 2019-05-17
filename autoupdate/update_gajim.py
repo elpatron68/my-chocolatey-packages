@@ -23,8 +23,6 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     # Find download urls
-    url = 'https://gajim.org/downloads.php?lang=en'
-    data = requests.get(url).text
     suburl64 = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-64bits.*\.exe', data)
     download_url64 = 'https://gajim.org/' + suburl64
     print('Download URL 64 bit: ' + download_url64)
