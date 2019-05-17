@@ -7,7 +7,6 @@ from distutils.version import StrictVersion
 PATH = '.\\gajim'
 NUSPEC_FILE = PATH + '\\gajim.nuspec'
 PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
-DOWNLOAD_URL = 'https://dl.minio.io/server/minio/release/windows-amd64/minio.exe'
 
 print('Searching for Gajim update')
 
