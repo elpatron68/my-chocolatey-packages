@@ -2,32 +2,32 @@
 cd c:\Users\mbusc\Documents\projects\my-chocolatey-packages
 
 rem Openaudible
-echo Checking openaudible...
+echo Checking openaudible for update
 python autoupdate\update_openaudible.py > c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
 rem Minio Client
-echo Checking Minio Client
+echo Checking Minio Client for update
 python autoupdate\update_minio-client.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
 rem Minio Server
-echo Checking Minio Server
+echo Checking Minio Server for update
 python autoupdate\update_minio-server.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
 rem Gajim
-echo Checking Gajim
+echo Checking Gajim for update
 python autoupdate\update_gajim.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
 rem LANconfig
-echo Checking LANconfig
+echo Checking LANconfig for update
 python autoupdate\update_lanconfig.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
 rem LANmonitor
-echo Checking LANmonitor
+echo Checking LANmonitor for update
 python autoupdate\update_lanmonitor.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
