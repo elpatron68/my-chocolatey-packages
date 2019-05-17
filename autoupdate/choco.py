@@ -24,19 +24,19 @@ def get_version_from_nupgk(nuspecfile):
 
 
 def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, url32=''):
+    print('Update found')
     if os.path.exists(package_path + '/*.nupkg'):        
         print('Deleting old *.nupgk file(s)')
         purge_files(package_path, 'nupkg')
-        print('We have an update')
-        update_nuspec(nuspec_file, latest_version)
-        if url64 != '':
-             shachecksum = calc_checksum(url64, package_path)
-             update_ps1_file(ps1_file, shachecksum, url64, False, True)
-        if url32 != '':
-            shachecksum = calc_checksum(url32, package_path)
-            update_ps1_file(ps1_file, shachecksum, url32, True, False)
-        # choco_pack_push(package_path)
-        # git_commit_push(package_path)
+    update_nuspec(nuspec_file, latest_version)
+    if url64 != '':
+        shachecksum = calc_checksum(url64, package_path)
+        update_ps1_file(ps1_file, shachecksum, url64, False, True)
+    if url32 != '':
+        shachecksum = calc_checksum(url32, package_path)
+        update_ps1_file(ps1_file, shachecksum, url32, True, False)
+    # choco_pack_push(package_path)
+    # git_commit_push(package_path)
 
 def update_nuspec(nuspec_file, version):
     print('Replacing version in ' + nuspec_file)
