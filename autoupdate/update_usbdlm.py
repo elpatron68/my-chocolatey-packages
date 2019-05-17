@@ -10,7 +10,7 @@ PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
 
 print('Searching for usbdlm update')
 
-# Get latest version information an download url from HTML
+# Get latest version information and download url from HTML
 url = 'https://www.uwe-sieber.de/usbdlm_e.html'
 data = requests.get(url).text
 suburl = re.findall(r'Download latest release V\d*\.\d*\.\d*', data)[0]
