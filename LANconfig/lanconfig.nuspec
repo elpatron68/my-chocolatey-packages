@@ -32,8 +32,6 @@ LANconfig is the free-of-charge and user-friendly software for the configuration
     <releaseNotes>https://www.lancom-systems.de//download/?_file=RN_LCOS-1020-RU5_DE.pdf</releaseNotes>
   </metadata>
   <files>
-    <!-- this section controls what actually gets packaged into the Chocolatey package -->
     <file src="tools\**" target="tools" />
-    <!--Building from Linux? You may need this instead: <file src="tools/**" target="tools" />-->
   </files>
 </package>

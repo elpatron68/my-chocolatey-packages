@@ -29,13 +29,14 @@ def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, u
         purge_files(package_path, 'nupkg')
         print('We have an update')
         update_nuspec(nuspec_file, latest_version)
-        shachecksum = calc_checksum(url64, package_path)
-        update_ps1_file(ps1_file, shachecksum, url64, False)
+        if url64 != '':
+             shachecksum = calc_checksum(url64, package_path)
+             update_ps1_file(ps1_file, shachecksum, url64, False, True)
         if url32 != '':
             shachecksum = calc_checksum(url32, package_path)
-            update_ps1_file(ps1_file, shachecksum, url32, True)
-        choco_pack_push(package_path)
-
+            update_ps1_file(ps1_file, shachecksum, url32, True, False)
+        # choco_pack_push(package_path)
+        # git_commit_push(package_path)
 
 def update_nuspec(nuspec_file, version):
     print('Replacing version in ' + nuspec_file)
@@ -48,23 +49,28 @@ def update_nuspec(nuspec_file, version):
         f.write(content_new)
 
 
-def update_ps1_file(ps1_file, shachecksum, url, x86=False):
-    print('Replacing checksum in ' + ps1_file)
+def update_ps1_file(ps1_file, shachecksum, url, x86=False, x64=False):
+    print('Replacing checksums and downlod urls in ' + ps1_file)
     with open(ps1_file, 'r', encoding="utf8") as f:
         content = f.read()
-        if x86 == False:
+        if x64 == True:
+            print('Platform: x64')
             regex = re.compile(r"checksum64\s*=\s*'.*'", re.IGNORECASE)
             content_new1 = regex.sub("checksum64    = '" + shachecksum + "'", content)
             regex = re.compile(r"\$url64\s*=\s*'.*'", re.IGNORECASE)
             content_new = regex.sub("url64       = '" + url + "'", content_new1)
-        else:
+        elif x86 == True:
+            print('Platform: x86 / any')
             regex = re.compile(r"checksum\s*=\s*'.*'", re.IGNORECASE)
             content_new1 = regex.sub("checksum      = '" + shachecksum + "'", content)
             regex = re.compile(r"\$url\s*=\s*'.*'", re.IGNORECASE)
             content_new = regex.sub("url         = '" + url + "'", content_new1)
-    print('Writing new ' + ps1_file)
-    with open(ps1_file, 'w', encoding="utf8") as f:
-        f.write(content_new)
+    if x86 == True or x64 == True:
+        print('Writing new ' + ps1_file)
+        with open(ps1_file, 'w', encoding="utf8") as f:
+            f.write(content_new)
+    else:
+        print('Nothing to do (no platform given).')
 
 
 def calc_checksum(download_url, package_path):
