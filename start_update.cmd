@@ -31,5 +31,10 @@ echo Checking LANmonitor for update
 python autoupdate\update_lanmonitor.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
+rem USBDLM
+echo Checking USBDLM for update
+python autoupdate\update_usbdlm.py >> c:\temp\choco-autoupdate-update.log
+echo. >> c:\temp\choco-autoupdate-update.log
+
 type c:\temp\choco-autoupdate-update.log | telegram-send --stdin
 del c:\temp\choco-autoupdate-update.log
