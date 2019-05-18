@@ -31,6 +31,11 @@ echo Checking LANmonitor for update
 python autoupdate\update_lanmonitor.py >> c:\temp\choco-autoupdate-update.log
 echo. >> c:\temp\choco-autoupdate-update.log
 
+rem Streamwriter
+echo Checking Streamwriter for update
+python autoupdate\update_streamwriter.py >> c:\temp\choco-autoupdate-update.log
+echo. >> c:\temp\choco-autoupdate-update.log
+
 rem USBDLM
 echo Checking USBDLM for update
 python autoupdate\update_usbdlm.py >> c:\temp\choco-autoupdate-update.log
