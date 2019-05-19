@@ -3,7 +3,7 @@ import re
 import requests
 import json
 import choco
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 PATH = '.\\minio-client'
 NUSPEC_FILE = PATH + '\\minio-client.nuspec'
@@ -34,7 +34,7 @@ print('Latest version from minio download page: ' + latest_version)
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
-if StrictVersion(latest_version) > StrictVersion(nupkg_version):
+if LooseVersion(latest_version) > LooseVersion(nupkg_version):
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, DOWNLOAD_URL, '')
 else:
     print('No update available')
