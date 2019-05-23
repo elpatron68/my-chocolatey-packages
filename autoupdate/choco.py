@@ -35,9 +35,9 @@ def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, u
     if url32 != '':
         shachecksum = calc_checksum(url32, package_path)
         update_ps1_file(ps1_file, shachecksum, url32, True, False)
-    # choco_pack_push(package_path)
-    # git_commit_push(package_path)
-    print('All files updated, Choco and Git disabled.')
+    choco_pack_push(package_path)
+    git_commit_push(package_path)
+    print('All files updated.')
 
 def update_nuspec(nuspec_file, version):
     print('Replacing version in ' + nuspec_file)
