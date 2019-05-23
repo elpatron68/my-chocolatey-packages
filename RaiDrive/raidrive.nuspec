@@ -3,21 +3,40 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>raidrive</id>
-    <version>1.5.3.1</version>
+    <version>1.6.4.518</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <owners>elpatron</owners>
     <title>RaiDrive (Install)</title>
     <authors>OpenBoxLab</authors>
     <projectUrl>https://www.raidrive.com/</projectUrl>
-    <iconUrl>https://avatars2.githubusercontent.com/u/25641668?s=200&v=4</iconUrl>
+    <iconUrl>https://avatars2.githubusercontent.com/u/25641668</iconUrl>
     <copyright>2018 OpenBoxLab</copyright>
-    <!-- If there is a license Url available, it is required for the community feed -->
-    <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
-    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
-    <tags>raidrive SPACE_SEPARATED</tags>
-    <summary>__REPLACE__</summary>
-    <description>__REPLACE__MarkDown_Okay </description>
+    <tags>raidrive cloud storage dropbox onedrive googledrive webdav</tags>
+    <summary>RaiDrive lets you mount your cloud storage as local drive. Supports Google Drive/Photos, Onedrive, Dropbox, Box, Yandex, native Webdav, ftp, sftp and more.</summary>
+    <description>
+# What is RaiDrive?
+
+Make cloud storage like Google Drive, Google Photos, OneDrive, and Dropbox your Windows Drive. You no longer need to use your browser to find files.    
+
+## Network Drive
+
+You do not need to download all of the files in your cloud storage. Connect cloud storage to network drives for immediate use.
+
+## Edit File
+You can edit and save files instantly with your favorite programs such as Word, Excel, PowerPoint and Photoshop. Of course, you can also copy and move files. Experience true cloud storage now.
+
+## Speed
+
+It’s faster than the browser. You can create a drive only two times by selecting Storage and clicking OK. Simplifies procedures to provide a more pleasant experience.
+
+## Security
+
+It is safe. Google, Microsoft, and Dropbox are protecting your files. RaiDrive allows you to make folders and files appear in Windows Explorer, using the methods they provide officially.
+
+## Free
+
+All of this is absolutely free. We look forward to adding more features in the future.
+    </description>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
