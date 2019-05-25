@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 import requests
 import json
+import sys
 import choco
 from distutils.version import LooseVersion
 
@@ -36,5 +37,7 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if LooseVersion(latest_version) > LooseVersion(nupkg_version):
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, DOWNLOAD_URL, '')
+    sys.exit(1)
 else:
     print('No update available')
+    sys.exit(0)

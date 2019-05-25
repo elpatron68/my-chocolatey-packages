@@ -1,6 +1,7 @@
 import re
 import requests
 import json
+import sys
 import choco
 from distutils.version import StrictVersion
 
@@ -25,6 +26,7 @@ if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     download_url64 = 'https://www.uwe-sieber.de/files/usbdlm_x64.msi'
     download_url32 = 'https://www.uwe-sieber.de/files/usbdlm.msi'
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
+    sys.exit(1)
 else:
     print('No update available')
-
+    sys.exit(0)

@@ -1,6 +1,7 @@
 import re
 import requests
 import json
+import sys
 import choco
 from distutils.version import StrictVersion
 
@@ -30,6 +31,7 @@ if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     download_url32 = 'https://gajim.org/' + suburl32
     print('Download URL 32 bit: ' + download_url32)
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
+    sys.exit(1)
 else:
     print('No update available')
-
+    sys.exit(0)

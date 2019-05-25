@@ -1,6 +1,7 @@
 import re
 import requests
 import json
+import sys
 import choco
 from distutils.version import StrictVersion
 
@@ -24,6 +25,8 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, dlurl, '')
+    sys.exit(1)
 else:
     print('No update available')
+    sys.exit(0)
     
