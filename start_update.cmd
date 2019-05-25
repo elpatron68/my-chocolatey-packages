@@ -50,4 +50,5 @@ IF %ERRORLEVEL% EQU 0 (echo No update available) ELSE (echo Package updated and 
 echo. >> c:\temp\choco-autoupdate-update.log
 
 type c:\temp\choco-autoupdate-update.log | telegram-send --stdin
+echo Sent Telegram message
 del c:\temp\choco-autoupdate-update.log
