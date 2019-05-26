@@ -1,5 +1,4 @@
 @echo off
-cd c:\Users\mbusc\Documents\projects\my-chocolatey-packages
 
 set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor streamwriter usbdlm
 for %%a in (%packages%) do ( 
