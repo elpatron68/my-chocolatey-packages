@@ -1,5 +1,5 @@
 @echo off
-
+del c:\temp\choco-autoupdate-update.log
 set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor streamwriter usbdlm
 for %%a in (%packages%) do ( 
     echo Checking %%a for update...
@@ -11,4 +11,4 @@ for %%a in (%packages%) do (
 
 type c:\temp\choco-autoupdate-update.log | telegram-send --stdin
 echo Sent log file as Telegram message
-del c:\temp\choco-autoupdate-update.log
+
