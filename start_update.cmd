@@ -10,5 +10,5 @@ for %%a in (%packages%) do (
 )
 
 type c:\temp\choco-autoupdate-update.log | telegram-send --stdin
-echo Sent Telegram message
+echo Sent log file as Telegram message
 del c:\temp\choco-autoupdate-update.log
