@@ -1,5 +1,6 @@
 @echo off
 del c:\temp\choco-autoupdate-update.log
+git pull origin master > c:\temp\choco-autoupdate-update.log
 set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor streamwriter usbdlm
 for %%a in (%packages%) do ( 
     echo Checking %%a for update...
