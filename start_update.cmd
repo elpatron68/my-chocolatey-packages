@@ -3,8 +3,8 @@ set LOGFILE=%TEMP%\choco-autoupdate-update.log
 del /q %LOGFILE%
 echo Git pull...
 echo Git pull: > %LOGFILE%
-echo.
 git pull origin master >> %LOGFILE%
+echo.
 echo. >> %LOGFILE%
 set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor streamwriter usbdlm
 for %%a in (%packages%) do ( 
