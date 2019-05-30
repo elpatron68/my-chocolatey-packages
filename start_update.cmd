@@ -7,7 +7,8 @@ git pull origin master >> %LOGFILE%
 echo.
 echo. >> %LOGFILE%
 set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor streamwriter usbdlm
-for %%a in (%packages%) do ( 
+for %%a in (%packages%) do (
+    del /q %%a\*.nupkg
     echo Checking %%a for update...
     python autoupdate\update_%%a.py >> %LOGFILE%
     IF %ERRORLEVEL% EQU 0 (echo No update available) ELSE (echo Package updated and commited)
