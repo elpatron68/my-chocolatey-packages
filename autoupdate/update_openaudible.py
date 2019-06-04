@@ -24,7 +24,7 @@ nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
 if StrictVersion(latest_version) > StrictVersion(nupkg_version):
-    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, dlurl, '')
+    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', dlurl)
     sys.exit(1)
 else:
     print('No update available')
