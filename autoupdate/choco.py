@@ -98,9 +98,9 @@ def choco_pack_push(package_path):
 
 def git_commit_push(package_path):
     commitmessageparameter = '-am ' + '"' + package_path + ' automatic update"'
-    subprocess.call(['git.exe', 'pull', 'origin', 'master'], cwd=package_path)
-    subprocess.call(['git.exe', 'commit', commitmessageparameter], cwd=package_path)
-    subprocess.call(['git.exe', 'push'], cwd=package_path)
+    subprocess.call(['git.exe', 'pull', 'origin', 'master'], cwd=package_path + '/..')
+    subprocess.call(['git.exe', 'commit', commitmessageparameter], cwd=package_path + '/..')
+    subprocess.call(['git.exe', 'push'], cwd=package_path + '/..')
 
 def purge_files(path, extension):
     for f in os.listdir(path):
