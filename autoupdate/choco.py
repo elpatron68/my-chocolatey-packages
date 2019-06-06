@@ -1,3 +1,4 @@
+# Common functions for Chocolatey update scripts
 import os
 import re
 import subprocess
