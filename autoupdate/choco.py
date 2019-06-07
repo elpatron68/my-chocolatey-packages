@@ -112,11 +112,12 @@ def git_commit_push(package_path):
     subprocess.call(['git.exe', 'push'], cwd=package_path + '/..')
 
 
-# def purge_files(path, extension):
-#    for f in os.listdir(path):
-#        if re.search('*.' + extension, f):
-#            os.remove(os.path.join(path, f))
-
+'''
+def purge_files(path, extension):
+    for f in os.listdir(path):
+        if re.search('*.' + extension, f):
+            os.remove(os.path.join(path, f))
+'''
 
 def find_files(base, pattern):
     '''Return list of files matching pattern in base folder.'''
