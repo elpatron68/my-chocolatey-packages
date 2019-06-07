@@ -1,17 +1,18 @@
 # Common functions for Chocolatey update scripts
+import fnmatch
+import hashlib
 import os
 import re
 import subprocess
 import urllib.request
-import hashlib
 
 
 def sha256sum(filename):
-    h  = hashlib.sha256()
-    b  = bytearray(128*1024)
+    h = hashlib.sha256()
+    b = bytearray(128*1024)
     mv = memoryview(b)
     with open(filename, 'rb', buffering=0) as f:
-        for n in iter(lambda : f.readinto(mv), 0):
+        for n in iter(lambda: f.readinto(mv), 0):
             h.update(mv[:n])
     return h.hexdigest()
 
@@ -26,9 +27,11 @@ def get_version_from_nupgk(nuspecfile):
 
 def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, url32=''):
     print('Update found')
-    if os.path.exists(package_path + '/*.nupkg'):        
+    nupgkfiles = find_files(package_path, '*.nupkg')
+    if nupgkfiles.count > 0:
         print('Deleting old *.nupgk file(s)')
-        purge_files(package_path, 'nupkg')
+        for f in nupgkfiles:
+            os.remove(f)
     update_nuspec(nuspec_file, latest_version)
     if url64 != '':
         shachecksum = calc_checksum(url64, package_path)
@@ -39,6 +42,7 @@ def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, u
     choco_pack_push(package_path)
     git_commit_push(package_path)
     print('All files updated.')
+
 
 def update_nuspec(nuspec_file, version):
     print('Replacing version in ' + nuspec_file)
@@ -58,15 +62,19 @@ def update_ps1_file(ps1_file, shachecksum, url, x86=False, x64=False):
         if x64 == True:
             print('Platform: x64')
             regex = re.compile(r"checksum64\s*=\s*'.*'", re.IGNORECASE)
-            content_new1 = regex.sub("checksum64    = '" + shachecksum + "'", content)
+            content_new1 = regex.sub(
+                "checksum64    = '" + shachecksum + "'", content)
             regex = re.compile(r"\$url64\s*=\s*'.*'", re.IGNORECASE)
-            content_new = regex.sub("$url64      = '" + url + "'", content_new1)
+            content_new = regex.sub(
+                "$url64      = '" + url + "'", content_new1)
         elif x86 == True:
             print('Platform: x86 / any')
             regex = re.compile(r"checksum\s*=\s*'.*'", re.IGNORECASE)
-            content_new1 = regex.sub("checksum      = '" + shachecksum + "'", content)
+            content_new1 = regex.sub(
+                "checksum      = '" + shachecksum + "'", content)
             regex = re.compile(r"\$url\s*=\s*'.*'", re.IGNORECASE)
-            content_new = regex.sub("$url        = '" + url + "'", content_new1)
+            content_new = regex.sub(
+                "$url        = '" + url + "'", content_new1)
     if x86 == True or x64 == True:
         print('Writing new ' + ps1_file)
         with open(ps1_file, 'w', encoding="utf8") as f:
@@ -99,10 +107,18 @@ def choco_pack_push(package_path):
 def git_commit_push(package_path):
     commitmessageparameter = '-am ' + '"' + package_path + ' automatic update"'
     # subprocess.call(['git.exe', 'pull', 'origin', 'master'], cwd=package_path + '/..')
-    subprocess.call(['git.exe', 'commit', commitmessageparameter], cwd=package_path + '/..')
+    subprocess.call(['git.exe', 'commit', commitmessageparameter],
+                    cwd=package_path + '/..')
     subprocess.call(['git.exe', 'push'], cwd=package_path + '/..')
 
-def purge_files(path, extension):
-    for f in os.listdir(path):
-        if re.search('*.' + extension, f):
-            os.remove(os.path.join(path, f))
+
+# def purge_files(path, extension):
+#    for f in os.listdir(path):
+#        if re.search('*.' + extension, f):
+#            os.remove(os.path.join(path, f))
+
+
+def find_files(base, pattern):
+    '''Return list of files matching pattern in base folder.'''
+    return [n for n in fnmatch.filter(os.listdir(base), pattern) if
+            os.path.isfile(os.path.join(base, n))]
