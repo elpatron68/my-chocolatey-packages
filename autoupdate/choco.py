@@ -33,7 +33,7 @@ def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, u
             print('Deleting old *.nupgk file(s)')
             for f in nupgkfiles:
                 os.remove(f)
-    except ValueError as err:
+    except TypeError as err:
         pass 
     update_nuspec(nuspec_file, latest_version)
     if url64 != '':
