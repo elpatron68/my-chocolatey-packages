@@ -28,10 +28,13 @@ def get_version_from_nupgk(nuspecfile):
 def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, url32=''):
     print('Update found')
     nupgkfiles = find_files(package_path, '*.nupkg')
-    if nupgkfiles.count > 0:
-        print('Deleting old *.nupgk file(s)')
-        for f in nupgkfiles:
-            os.remove(f)
+    try:
+        if nupgkfiles.count > 0:
+            print('Deleting old *.nupgk file(s)')
+            for f in nupgkfiles:
+                os.remove(f)
+    except ValueError as err:
+        pass 
     update_nuspec(nuspec_file, latest_version)
     if url64 != '':
         shachecksum = calc_checksum(url64, package_path)
