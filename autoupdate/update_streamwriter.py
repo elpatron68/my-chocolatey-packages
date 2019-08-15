@@ -26,8 +26,8 @@ print('Chocolatey Version: ' + nupkg_version)
 if LooseVersion(latest_version) > LooseVersion(nupkg_version):
     print('Download URL: ' + download_url)
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', download_url)
-    sys.exit(1)
+    sys.exit()
 else:
     print('No update available')
-    sys.exit(0)
+    sys.exit()
 
