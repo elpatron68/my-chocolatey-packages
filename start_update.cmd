@@ -10,7 +10,7 @@ set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor st
 for %%a in (%packages%) do (
     del /q %%a\*.nupkg
     echo Checking %%a for update...
-    python autoupdate\update_%%a.py >> %LOGFILE%
+    C:\Python37\python.exe autoupdate\update_%%a.py >> %LOGFILE%
     IF %ERRORLEVEL% EQU 0 (echo No update available) ELSE (echo Package updated and commited)
     echo.
     echo. >> %LOGFILE%
