@@ -8,9 +8,9 @@
     <title>B4J (Install)</title>
     <authors>Anywhere Software, Erel Uziel</authors>
     <projectUrl>https://www.b4x.com/</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/bj4.png</iconUrl>-->
+    <iconUrl>https://rawcdn.githack.com/elpatron68/my-chocolatey-packages/b115e498d592958c81fe4940e416e7a8ad987d24/B4J/b4j.png</iconUrl>
     <copyright>2019 Anywhere Software</copyright>
-    <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
+    <licenseUrl>https://rawcdn.githack.com/elpatron68/my-chocolatey-packages/b115e498d592958c81fe4940e416e7a8ad987d24/B4J/EULA.rtf</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <docsUrl>https://www.b4x.com/b4j/documentation.html</docsUrl>
     <bugTrackerUrl>https://www.b4x.com/android/forum/forums/bugs-wishlist.30/</bugTrackerUrl>
@@ -22,14 +22,12 @@
     - B4X programming language is a modern version of Visual Basic. It is simple and powerful.
     - An active and friendly community with more than 90k developers.
     </description>
-  <dependencies>
-    <dependency id="openjdk11"/>
-  </dependencies>
-    
+
+    <dependencies>
+      <dependency id="openjdk11" version="11.0.4.11" />
+    </dependencies>
   </metadata>
   <files>
-    <!-- this section controls what actually gets packaged into the Chocolatey package -->
     <file src="tools\**" target="tools" />
-    <!--Building from Linux? You may need this instead: <file src="tools/**" target="tools" />-->
   </files>
 </package>
