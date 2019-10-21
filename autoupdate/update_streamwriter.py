@@ -13,11 +13,15 @@ print('Searching for Streamwriter update')
 
 # Get latest version information an download url from HTML
 url = 'https://streamwriter.org/en/'
-data = requests.get(url).text
-version = re.findall(r'Current version: \d\.\d\.\d\.\d', data)[0]
-download_url = 'https://streamwriter.org/en/downloads/2/'
-latest_version = re.findall(r'\d\.\d\.\d\.\d', version)[0]
-print('Latest version from Streamwriter download page: ' + latest_version)
+try:
+    data = requests.get(url).text
+    version = re.findall(r'Current version: \d\.\d\.\d\.\d', data)[0]
+    download_url = 'https://streamwriter.org/en/downloads/2/'
+    latest_version = re.findall(r'\d\.\d\.\d\.\d', version)[0]
+    print('Latest version from Streamwriter download page: ' + latest_version)
+except:
+    print('Requesting URL failed, terminating.')
+    sys.exit()
 
 # Get last committed chocolatey version from nuspec
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)

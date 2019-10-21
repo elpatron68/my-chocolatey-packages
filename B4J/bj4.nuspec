@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>B4J</id>
+    <version>7.80</version>
+    <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
+    <owners>elpatron</owners>
+    <title>B4J (Install)</title>
+    <authors>Anywhere Software, Erel Uziel</authors>
+    <projectUrl>https://www.b4x.com/</projectUrl>
+    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/bj4.png</iconUrl>-->
+    <copyright>2019 Anywhere Software</copyright>
+    <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <docsUrl>https://www.b4x.com/b4j/documentation.html</docsUrl>
+    <bugTrackerUrl>https://www.b4x.com/android/forum/forums/bugs-wishlist.30/</bugTrackerUrl>
+    <tags>bj4 development IoT crossplatform RAD</tags>
+    <summary>B4J – RAD development tool for cross platform desktop, server and IoT solutions</summary>
+    <description>
+    - B4X RAD tools include all the features needed to develop great, real-world solutions.
+    - Compiled applications (iOS, Android, Arduino and ESP8266) are 100% native without any dependencies.
+    - B4X programming language is a modern version of Visual Basic. It is simple and powerful.
+    - An active and friendly community with more than 90k developers.
+    </description>
+  <dependencies>
+    <dependency id="openjdk11"/>
+  </dependencies>
+    
+  </metadata>
+  <files>
+    <!-- this section controls what actually gets packaged into the Chocolatey package -->
+    <file src="tools\**" target="tools" />
+    <!--Building from Linux? You may need this instead: <file src="tools/**" target="tools" />-->
+  </files>
+</package>
