@@ -9,12 +9,12 @@ from distutils.version import LooseVersion
 PATH = '.\\minio-server'
 NUSPEC_FILE = PATH + '\\minio-server.nuspec'
 PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
-DOWNLOAD_URL = 'https://dl.minio.io/server/minio/release/windows-amd64/minio.exe'
+DOWNLOAD_URL = 'https://dl.min.io/server/minio/release/windows-amd64/minio.exe'
 
 print('Searching for minio-server update')
 
 # Get latest version information an download url from HTML
-url = 'https://dl.minio.io/server/minio/release/windows-amd64/'
+url = 'https://dl.min.io/server/minio/release/windows-amd64/'
 data = requests.get(url).text
 soup = BeautifulSoup(data, 'lxml')
 table = soup.find_all('table')[0] 
