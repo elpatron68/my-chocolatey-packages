@@ -7,8 +7,8 @@ $packageArgs = @{
   unzipLocation   = $toolsDir
   fileType        = 'EXE'
   url64bit        = $url64
-  FileFullPath    = "$toolsDir\minio.exe"
-  softwareName    = 'minio-server*'
+  FileFullPath    = "$toolsDir\mc.exe"
+  softwareName    = 'minio-client*'
 
   checksum64    = '74ec949882e9486e57c9ca0e5fc3797578c1dc7931a8479f5099525468ea9e01'
   checksumType64  = 'sha256'
