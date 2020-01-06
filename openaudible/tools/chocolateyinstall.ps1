@@ -10,7 +10,7 @@ $packageArgs = @{
   
   softwareName  = 'openaudible*'
 
-  checksum      = 'eee6d5dc372f160173779897bab08dfcc18dda28428d21981f650aa2ac6f7a03'
+  checksum      = '4cbd08fa6dec6055fc7c726524616b2c51d7436df38b0bd9e46bad1a29388ecb'
   checksumType  = 'sha256'
 
   silentArgs    = "-q -overwrite"
