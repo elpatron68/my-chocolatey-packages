@@ -10,7 +10,7 @@ $packageArgs = @{
   FileFullPath    = "$toolsDir\mc.exe"
   softwareName    = 'minio-client*'
 
-  checksum64    = '75fc361a1eebedc8c6dee0e8680ac9be7675863ac44bf502627995b6edbed16e'
+  checksum64    = '9d8ef423077718534ceee05d5c2d09e9a438c75e8d79af3be66a4d1cfd080914'
   checksumType64  = 'sha256'
 }
 Get-ChocolateyWebFile @packageArgs
