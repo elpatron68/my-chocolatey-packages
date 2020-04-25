@@ -54,7 +54,8 @@ def update_nuspec(nuspec_file, version):
     print('Replacing version in ' + nuspec_file)
     with open(nuspec_file, 'r', encoding="utf8") as f:
         content = f.read()
-        regex = re.compile(r'<version>\d*\.\d*\.\d*</version>', re.IGNORECASE)
+        # regex = re.compile(r'<version>\d*\.\d*\.\d*</version>', re.IGNORECASE) 
+        regex = re.compile(r'<version>.*<\/version>', re.IGNORECASE)
         content_new = regex.sub("<version>" + version + "</version>", content)
     print('Writing new ' + nuspec_file)
     with open(nuspec_file, 'w', encoding="utf8") as f:
