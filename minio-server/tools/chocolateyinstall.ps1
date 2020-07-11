@@ -10,7 +10,7 @@ $url64      = 'https://dl.min.io/server/minio/release/windows-amd64/minio.exe'
   FileFullPath    = "$toolsDir\minio.exe"	
   softwareName    = 'minio-server*'	
 
-   checksum64    = '2f99332c23da2d53554958dcd50c1d4f4c3d98b00d8a71cff23fa19900275625'	
+   checksum64    = '2691ff15a44d713db61b981855fc8bad3a36f99976e93e0c51119314439403d0'	
   checksumType64  = 'sha256'	
 }	
 Get-ChocolateyWebFile @packageArgs 
