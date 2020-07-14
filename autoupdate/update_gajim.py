@@ -12,9 +12,9 @@ PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
 print('Searching for Gajim update')
 
 # Get latest version information an download url from HTML
-url = 'https://gajim.org/downloads.php?lang=en'
+url = 'https://gajim.org/download/'
 data = requests.get(url).text
-suburl = re.findall(r'Latest\s*version\s*of\s*Gajim\s*is\s*<strong>\d*\.\d*\.\d*<\/strong>', data)[0]
+suburl = re.findall(r'Latest release <span class="label label-primary">\d*\.\d*\.\d*', data)[0]
 latest_version = re.findall(r'\d*\.\d*\.\d*', suburl)[0]
 print('Latest version from Gajim download page: ' + latest_version)
 
@@ -24,11 +24,9 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if StrictVersion(latest_version) > StrictVersion(nupkg_version):
     # Find download urls
-    suburl64 = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-64bits.*\.exe', data)
-    download_url64 = 'https://gajim.org/' + suburl64
+    download_url64 = re.findall(r'https:\/\/gajim\.org\/downloads\/\d*\.\d*\/Gajim-\d*\.\d*\.\d*-64bit*\.exe', data)
     print('Download URL 64 bit: ' + download_url64)
-    suburl32 = re.findall(r'downloads\/\d\.\d\/gajim-\d*\.\d*\.\d*-32bits.*\.exe', data)
-    download_url32 = 'https://gajim.org/' + suburl32
+    download_url32 = re.findall(r'https:\/\/gajim\.org\/downloads\/\d*\.\d*\/Gajim-\d*\.\d*\.\d*-32bit*\.exe', data)
     print('Download URL 32 bit: ' + download_url32)
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
     sys.exit(1)
