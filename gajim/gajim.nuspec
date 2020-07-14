@@ -38,7 +38,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>Denis Fomin,Yann Leboulanger</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://gajim.org/</projectUrl>
-    <iconUrl>https://dev.gajim.org/uploads/-/system/project/avatar/30/gajim.png</iconUrl>
+    <iconUrl>https://gajim.org/img/gajim-logo.png</iconUrl>
     <copyright>Copyright © 2003-2018 Gajim Team</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>https://www.gnu.org/licenses/gpl-3.0.html</licenseUrl>
