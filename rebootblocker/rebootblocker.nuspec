@@ -26,36 +26,31 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>1.2.0.0</version>
-    <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
+    <version>2.5.0.20200831</version>
+    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
-    <owners>elpatron</owners>
+    <!--<owners>__REPLACE_YOUR_NAME__</owners>-->
     <!-- ============================== -->
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>RebootBlocker (Install)</title>
+    <title>RebootBlocker</title>
     <authors>Ulrich Decker</authors>
     <!-- projectUrl is required for the community feed -->
-    <projectUrl>https://www.udse.de/de/windows-10-neustart-verhindern</projectUrl>
+    <projectUrl>https://udse.de/reboot-blocker/</projectUrl>
     <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/rebootblocker.png</iconUrl>-->
-    <copyright>(c) 2016-2018 Ulrich Decker</copyright>
+    <!-- <copyright>Year Software Vendor</copyright> -->
     <!-- If there is a license Url available, it is required for the community feed -->
-    <licenseUrl>https://www.udse.de/de/eula-rebootblocker</licenseUrl>
+    <licenseUrl>https://udse.de/endbenutzervertrag-eula/</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
     <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>prevent windows updates reboot</tags>
-    <summary>Prevent Windows 10 from reboot after installing Microsoft updates</summary>
-    <description>
-RebootBlocker installs a service that prevents Windows 10 Version 1607 and newer from rebooting after installing Microsoft Updates.
-
-RebootBlocker is suitable for dealing with unwanted reboots. The setup program installs a Windows service that automatically adjusts the "usage time" every hour, so Windows can never restart.
-    
-    </description>
-    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
+    <tags>rebootblocker reboot blocker windowsupdate windows update</tags>
+    <summary>Prevents windows updates from automatically rebooting Windows</summary>
+    <description>Prevents windows updates from automatically rebooting Windows and losing potential unsaved work</description>
+    <releaseNotes>Initial package of RebootBlocker 2.5</releaseNotes>
     <!-- =============================== -->      
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
