@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://www.udse.de/download/RebootBlockerSetup.zip'
+$url        = 'https://www.udse.de/download/RebootBlockerSetup.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -8,13 +8,13 @@ $packageArgs = @{
   fileType      = 'EXE'
   url           = $url
 
-  softwareName  = 'rebootblocker*'
+  softwareName  = 'RebootBlocker'
 
-  checksum      = '007FCDFC49FBCED0C131DC0284B9EB0A2B091D6A1F849D5C586511F89A6AF1C4'
+  checksum      = 'DE77B2FAE8CE49812EC0F3CECF6A258D2CE65E595BD2CE61F764A3D26905EB8F'
   checksumType  = 'sha256'
   
-  silentArgs    = "/silent /norestart"
+  silentArgs   = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
   validExitCodes= @(0)
 }
 
-Install-ChocolateyZipPackage @packageArgs
+Install-ChocolateyPackage @packageArgs
