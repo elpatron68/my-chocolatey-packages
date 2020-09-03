@@ -6,7 +6,7 @@ $url        = 'https://www.b4x.com/b4j/files/B4J.exe'
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = $toolsDir
-  fileType      = 'EXE_MSI_OR_MSU'
+  fileType      = 'EXE'
   url           = $url
 
   softwareName  = 'B4J*'
