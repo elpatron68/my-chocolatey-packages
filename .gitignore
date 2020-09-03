@@ -6,3 +6,4 @@ tmp
 *.exe
 test.cmd
 minio-servertmp.file
+gajimtmp.file
