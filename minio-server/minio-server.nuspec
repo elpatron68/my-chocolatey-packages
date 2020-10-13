@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>minio-server</id>
-    <version>2020.10.09</version>
+    <version>2020.10.12</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <owners>elpatron</owners>
     <title>Minio Server</title>
@@ -38,6 +38,10 @@ Minio provides confidentiality, integrity and authenticity assurances for encryp
 ## Pluggable Storage Backend
 In addition to Minio's own filesystem and erasure code backends for DAS and JBODs, external storage backends such as NAS, Google Cloud Storage, and Azure Blob Storage are supported as well.    
     </description>
+
+  <dependencies>
+    <dependency id="KB2919355" />
+  </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />

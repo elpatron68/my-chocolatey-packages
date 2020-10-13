@@ -13,7 +13,7 @@ $packageArgs = @{
   checksum      = '4a6e80e72278ca7926d48bab3a94d3c6e15aa1aa82f9738c8922a954c409d601'
   checksumType  = 'sha256'
 
-  silentArgs    = "-q -overwrite"
+  silentArgs    = "-q"
   validExitCodes= @(0)
   
 }

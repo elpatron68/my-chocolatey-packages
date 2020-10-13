@@ -49,6 +49,10 @@ version  print version info
 ```
     </description>
 
+  <dependencies>
+    <dependency id="KB2919355" version="1.0.20160915" />
+  </dependencies>
+
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
