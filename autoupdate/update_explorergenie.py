@@ -5,19 +5,19 @@ import sys
 import choco
 from distutils.version import StrictVersion
 
-PATH = '.\\copypathmenu'
-NUSPEC_FILE = PATH + '\\copypathmenu.nuspec'
+PATH = '.\\explorergenie'
+NUSPEC_FILE = PATH + '\\explorergenie.nuspec'
 PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
 
-print('Searching for CopyPathMenu update')
+print('Searching for ExplorerGenie update')
 
 # Get latest version information an download url from HTML
-url = 'https://streamwriter.org/en/'
+url = 'https://www.martinstoeckli.ch/explorergenie/explorergenie.msi'
 data = requests.get(url).text
-version = re.findall(r'Current version: \d\.\d\.\d\.\d', data)[0]
-download_url = 'https://streamwriter.org/en/downloads/2/'
-latest_version = re.findall(r'\d\.\d\.\d\.\d', version)[0]
-print('Latest version from Streamwriter download page: ' + latest_version)
+version = re.findall(r'\d\.\d\.\d', data)[0]
+download_url = 'https://www.martinstoeckli.ch/explorergenie/explorergenie.msi'
+latest_version = re.findall(r'\d\.\d\.\d', version)[0]
+print('Latest version from ExplorerGenie download page: ' + latest_version)
 
 # Get last committed chocolatey version from nuspec
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
