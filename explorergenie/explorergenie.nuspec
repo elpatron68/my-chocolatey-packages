@@ -7,8 +7,8 @@
     <title>ExplorerGenie (Install)</title>
     <authors>Martin Stoeckli</authors>
     <projectUrl>https://www.martinstoeckli.ch/explorergenie/</projectUrl>
-    <iconUrl>https://www.martinstoeckli.ch/ladybug.png</iconUrl>
-    <copyright>(c) 2020 Matrin Stoeckli</copyright>
+    <iconUrl>https://www.martinstoeckli.ch/explorergenie/icon32.png</iconUrl>
+    <copyright>(c) 2020 Martin Stoeckli</copyright>
     <licenseUrl>https://github.com/martinstoeckli/ExplorerGenie/blob/main/LICENSE</licenseUrl>
     <projectSourceUrl>https://github.com/martinstoeckli/ExplorerGenie</projectSourceUrl>
     <tags>explorergenie explorer extension</tags>
