@@ -4,7 +4,6 @@ $url        = 'https://www.martinstoeckli.ch/explorergenie/explorergenie.msi'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
-  unzipLocation = $toolsDir
   fileType      = 'msi'
   url           = $url
 
