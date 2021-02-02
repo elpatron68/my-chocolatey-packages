@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>lanconfig</id>
-    <version>10.42.28</version>
+    <version>10.42.28.20210201</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <owners>elpatron</owners>
     <title>LANconfig (Install)</title>
@@ -28,6 +28,8 @@ LANconfig is the free-of-charge and user-friendly software for the configuration
 - QuickFinder, the quick way to find devices, parameters and settings
 - High-performance IPv4 and IPv6 firewall, including rule configuration
 - QuickLinks for intuitive user guidance through complex structures
+- Central management for groups of devices
+- Central distribution of firmwares and scripts
     </description>
     <releaseNotes>https://www.lancom-systems.de//download/?_file=RN_LCOS-1020-RU5_DE.pdf</releaseNotes>
   </metadata>
