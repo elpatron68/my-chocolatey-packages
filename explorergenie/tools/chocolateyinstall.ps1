@@ -9,7 +9,7 @@ $packageArgs = @{
 
   softwareName  = 'ExplorerGenie'
 
-  checksum      = '3822E84DB56585218276E8BD702AC7B3F3B0E0F76A15A21F91AE869963C00600'
+  checksum      = '8aea4e58a462417357d64eb0b5d444e49575e9a32b42b271ab1432e242e5203d'
   checksumType  = 'sha256'
   
   silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
