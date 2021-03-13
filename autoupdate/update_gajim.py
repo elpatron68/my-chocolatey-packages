@@ -14,7 +14,7 @@ print('Searching for Gajim update')
 # Get latest version information an download url from HTML
 url = 'https://gajim.org/download/'
 data = requests.get(url).text
-suburl = re.findall(r'Latest release <span class="label label-primary">\d*\.\d*\.\d*', data)[0]
+suburl = re.findall(r'<td><span class="label label-primary">\d*\.\d*\.\d*', data)[0]
 latest_version = re.findall(r'\d*\.\d*\.\d*', suburl)[0]
 print('Latest version from Gajim download page: ' + latest_version)
 
