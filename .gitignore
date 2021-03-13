@@ -7,3 +7,4 @@ tmp
 test.cmd
 minio-servertmp.file
 gajimtmp.file
+minio-clienttmp.file
