@@ -10,7 +10,7 @@ $packageArgs = @{
   FileFullPath    = "$toolsDir\minio.exe"	
   softwareName    = 'minio-server*'	
 
-  checksum64    = '0fed4c11a3feaa7f9ff7722ad60434b8299e41eeb31c456fbecb19f0cdb02bcc'	
+  checksum64    = '7d4b870fbc3a3a378e13e3097323a919782ca3223e458f1777562f25a188e308'	
   checksumType64  = 'sha256'	
 }	
 Get-ChocolateyWebFile @packageArgs 
