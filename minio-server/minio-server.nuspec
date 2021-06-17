@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>minio-server</id>
-    <version>2021.06.09</version>
+    <version>2021.06.17</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <owners>elpatron</owners>
     <title>Minio Server</title>
