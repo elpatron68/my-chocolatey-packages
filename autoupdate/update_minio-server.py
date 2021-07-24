@@ -9,7 +9,7 @@ from distutils.version import LooseVersion
 PATH = '.\\minio-server'
 NUSPEC_FILE = PATH + '\\minio-server.nuspec'
 PS1_FILE = PATH + '\\tools\\chocolateyinstall.ps1'
-DOWNLOAD_URL = 'https://dl.min.io/server/minio/release/windows-amd64/minio.exe'
+# DOWNLOAD_URL = 'https://dl.min.io/server/minio/release/windows-amd64/minio.exe'
 
 print('Searching for minio-server update')
 
@@ -26,9 +26,15 @@ for row in table.find_all('tr'):
     for column in columns:
         val = column.get_text()
         if len(val) == 16:
+            regex = r"minio\.RELEASE\." + val[:10] + "T\d{2}-\d{2}-\d{2}Z"
+            archiveurl = 'https://dl.min.io/server/minio/release/windows-amd64/archive/'
+            test_str = requests.get(archiveurl).text
+            matches = re.findall(regex, test_str, re.MULTILINE)
+            DOWNLOAD_URL = 'https://dl.min.io/server/minio/release/windows-amd64/archive/' + matches[0]
             latest_version = val[:10].replace('-', '.')
             break
 
+print('Download URL: ' + DOWNLOAD_URL)
 print('Latest version from minio download page: ' + latest_version)
 
 # Get last committed chocolatey version from nuspec
