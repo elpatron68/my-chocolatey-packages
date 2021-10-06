@@ -10,7 +10,7 @@ $packageArgs = @{
 
   softwareName  = 'streamwriter*'
 
-  checksum      = '0856e85b246dbbd7cbed70c362a30bf52b2817706b826c111c87ea55cc4489e9'
+  checksum      = 'e2618fd080bf37ac41e57c6be6a07d8ee615a45682768442c8b27c92ebeda1d3'
   checksumType  = 'sha256'
 
   silentArgs    = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
