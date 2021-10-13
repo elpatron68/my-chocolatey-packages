@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop';	
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"	
-$url64      = 'https://dl.min.io/server/minio/release/windows-amd64/archive/minio.RELEASE.2021-09-24T00-24-24Z'	
+$url64      = 'https://dl.min.io/server/minio/release/windows-amd64/archive/minio.RELEASE.2021-10-13T00-23-17Z'	
 
 $packageArgs = @{	
   packageName     = $env:ChocolateyPackageName	
@@ -10,7 +10,7 @@ $packageArgs = @{
   FileFullPath    = "$toolsDir\minio.exe"	
   softwareName    = 'minio-server*'	
 
-  checksum64    = '7f263236efe3d07f03b0acb44d22473ec580b8809ff9de2679931e98bb7b1b0f'	
+  checksum64    = 'b0a5e67385b3ec5e970b6cd69be5cd4611592cd292fffc73a835db42e1fe8abc'	
   checksumType64  = 'sha256'	
 }	
 # Get-ChocolateyWebFile @packageArgs 
