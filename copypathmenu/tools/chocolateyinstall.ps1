@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://www.martinstoeckli.ch/copypathmenu/copypathmenu_4_0.msi'
+$url        = 'https://streamwriter.org/en/downloads/2/'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $packageArgs = @{
 
   softwareName  = 'CopyPathMenu'
 
-  checksum      = '294A1991C5E4713B438C971AC53EECFA'
+  checksum      = 'e2618fd080bf37ac41e57c6be6a07d8ee615a45682768442c8b27c92ebeda1d3'
   checksumType  = 'md5'
   
   silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
