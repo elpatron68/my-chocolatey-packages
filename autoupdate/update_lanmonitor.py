@@ -15,7 +15,7 @@ print('Searching for LANmonitor update')
 url = 'https://www.lancom-systems.de/downloads/'
 data = requests.get(url).text
 suburl = re.findall(r'LANmonitor-\d{2,3}\.\d{2,3}\.\d{4}-R..\.exe', data)[0]
-download_url = 'https://www.lancom-systems.de/fileadmin/download/LANtools/' + suburl
+download_url = 'https://www.lancom-systems.de/download/LANtools/' + suburl
 latest_version = re.findall(r'\d{2,3}\.\d{2,3}\.\d{4}', suburl)[0]
 # Remove leading zeros
 latest_version = re.sub(r'\.0*', '.', latest_version)
