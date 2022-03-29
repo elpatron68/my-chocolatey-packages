@@ -3,7 +3,7 @@ import requests
 import json
 import sys
 import choco
-from distutils.version import StrictVersion
+from packaging.version import Version
 
 PATH = '.\\usbdlm'
 NUSPEC_FILE = PATH + '\\usbdlm.nuspec'
@@ -22,7 +22,7 @@ print('Latest version from usbdlm download page: ' + latest_version)
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
-if StrictVersion(latest_version) > StrictVersion(nupkg_version):
+if Version(latest_version) > Version(nupkg_version):
     download_url64 = 'https://www.uwe-sieber.de/files/usbdlm_x64.msi'
     download_url32 = 'https://www.uwe-sieber.de/files/usbdlm.msi'
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
