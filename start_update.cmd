@@ -6,7 +6,7 @@ echo Git pull: > %LOGFILE%
 git pull origin master >> %LOGFILE%
 echo.
 echo. >> %LOGFILE%
-set packages=openaudible minio-client minio-server gajim lanconfig lanmonitor streamwriter usbdlm explorergenie
+set packages=openaudible gajim lanconfig lanmonitor streamwriter usbdlm explorergenie
 for %%a in (%packages%) do (
     del /q %%a\*.nupkg
     echo Checking %%a for update...

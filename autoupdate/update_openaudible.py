@@ -3,7 +3,7 @@ import requests
 import json
 import sys
 import choco
-from distutils.version import StrictVersion
+from packaging.version import Version
 
 PATH = '.\\openaudible'
 NUSPEC_FILE = PATH + '\\openaudible.nuspec'
@@ -23,9 +23,9 @@ print('Latest version from JSON: ' + latest_version)
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
-if StrictVersion(latest_version) > StrictVersion(nupkg_version):
+if Version(latest_version) > Version(nupkg_version):
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', dlurl)
-    sys.exit(1)
+    sys.exit()
 else:
     print('No update available')
     sys.exit(0)

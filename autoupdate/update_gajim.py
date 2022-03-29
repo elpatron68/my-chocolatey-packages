@@ -3,7 +3,7 @@ import requests
 import json
 import sys
 import choco
-from distutils.version import StrictVersion
+from packaging.version import Version
 
 PATH = '.\\gajim'
 NUSPEC_FILE = PATH + '\\gajim.nuspec'
@@ -22,14 +22,14 @@ print('Latest version from Gajim download page: ' + latest_version)
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
-if StrictVersion(latest_version) > StrictVersion(nupkg_version):
+if Version(latest_version) > Version(nupkg_version):
     # Find download urls
     download_url64 = re.findall(r'https:\/\/gajim\.org\/downloads\/\d*\.\d*\/Gajim-\d*\.\d*\.\d*-64bit?-?\d*\.exe', data)[0]
     print('Download URL 64 bit: ' + download_url64)
     download_url32 = re.findall(r'https:\/\/gajim\.org\/downloads\/\d*\.\d*\/Gajim-\d*\.\d*\.\d*-32bit?-?\d*\.exe', data)[0]
     print('Download URL 32 bit: ' + download_url32)
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
-    sys.exit(1)
+    sys.exit()
 else:
     print('No update available')
-    sys.exit(0)
+    sys.exit()

@@ -3,7 +3,7 @@ import requests
 import json
 import sys
 import choco
-from distutils.version import StrictVersion
+from packaging.version import Version
 
 PATH = '.\\explorergenie'
 NUSPEC_FILE = PATH + '\\explorergenie.nuspec'
@@ -23,10 +23,10 @@ print('Latest version from ExplorerGenie download page: ' + latest_version)
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
-if StrictVersion(latest_version) > StrictVersion(nupkg_version):
+if Version(latest_version) > Version(nupkg_version):
     print('Download URL: ' + download_url)
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', download_url)
-    sys.exit(1)
+    sys.exit()
 else:
     print('No update available')
-    sys.exit(0)
+    sys.exit()

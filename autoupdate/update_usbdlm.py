@@ -26,7 +26,7 @@ if Version(latest_version) > Version(nupkg_version):
     download_url64 = 'https://www.uwe-sieber.de/files/usbdlm_x64.msi'
     download_url32 = 'https://www.uwe-sieber.de/files/usbdlm.msi'
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64, download_url32)
-    sys.exit(1)
+    sys.exit()
 else:
     print('No update available')
-    sys.exit(0)
+    sys.exit()

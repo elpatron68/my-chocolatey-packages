@@ -3,7 +3,7 @@ import requests
 import json
 import sys
 import choco
-from distutils.version import LooseVersion
+from packaging.version import Version
 
 PATH = '.\\streamwriter'
 NUSPEC_FILE = PATH + '\\streamwriter.nuspec'
@@ -27,7 +27,7 @@ except:
 nupkg_version = choco.get_version_from_nupgk(NUSPEC_FILE)
 print('Chocolatey Version: ' + nupkg_version)
 
-if LooseVersion(latest_version) > LooseVersion(nupkg_version):
+if Version(latest_version) > Version(nupkg_version):
     print('Download URL: ' + download_url)
     choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', download_url)
     sys.exit()
