@@ -24,9 +24,9 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if Version(latest_version) > Version(nupkg_version):
     # Find download urls
-    download_url64 = re.findall(r'https:\/\/gajim\.org\/downloads\/\d*\.\d*\/Gajim-\d*\.\d*\.\d*-64bit?-?\d*\.exe', data)[0]
-    print('Download URL 64 bit: ' + download_url64)
-    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url64)
+    download_url = re.findall(r'https:\/\/gajim\.org\/downloads\/\d*\.\d*\/Gajim-\d*\.\d*\.\d*-64bit?-?\d*\.exe', data)[0]
+    print('Download URL 64 bit: ' + download_url)
+    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url)
     sys.exit()
 else:
     print('No update available')
