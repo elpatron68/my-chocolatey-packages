@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://github.com/openaudible/openaudible/releases/download/v3.6/OpenAudible_3.6_x86_64.exe'
+$url        = 'https://github.com/openaudible/openaudible/releases/download/v3.6.1/OpenAudible_3.6.1_x86_64.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $packageArgs = @{
   
   softwareName  = 'openaudible*'
 
-  checksum      = '4f12a7b5afe4b383e6ff7e93e57e51a3ed997276a94c0fe1777001586df91b38'
+  checksum      = '849d9ca74a7dd9ba134c3a1bcbfcedaf7e9b6201550ec33e36430aa640876e56'
   checksumType  = 'sha256'
 
   silentArgs    = "-q"
