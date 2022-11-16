@@ -13,9 +13,9 @@ $packageArgs = @{
 
   softwareName  = 'usbdlm*'
 
-  checksum      = '577cf4df6ff0955087fbd8ab9f4c461729f6cd7988f0ff72449f37b43054698f'
+  checksum      = 'd7b2ef706d35aa2db68933543de119939382676f07931737a621e5b92eb5c5a9'
   checksumType  = 'sha256'
-  checksum64    = 'daf30e9e4e8d6b923ddc64f66b39d45770c02eb3ba4faa277b7bfb1e380328d0'
+  checksum64    = '0ce4e5a932ca4618cb73620d7051b3d1ed47b9f3c247aab1b96d90d35fe74e28'
   checksumType64= 'sha256'
 
   silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
