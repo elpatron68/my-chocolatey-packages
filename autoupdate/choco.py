@@ -107,7 +107,7 @@ def choco_pack_push(package_path):
     print('Chocolatey pack')
     subprocess.call(['choco.exe', 'pack'], cwd=package_path)
     print('Chocolatey push')
-    subprocess.call(['choco.exe', 'push'], cwd=package_path)
+    subprocess.call(['choco.exe', 'push', '--source=https://push.chocolatey.org/'], cwd=package_path)
     print('Git commit')
 
 
