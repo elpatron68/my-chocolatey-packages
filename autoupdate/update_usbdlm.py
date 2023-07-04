@@ -14,8 +14,8 @@ print('Searching for usbdlm update')
 # Get latest version information and download url from HTML
 url = 'https://www.uwe-sieber.de/usbdlm_e.html'
 data = requests.get(url).text
-suburl = re.findall(r'Download latest release V\d*\.\d*\.\d*', data)[0]
-latest_version = re.findall(r'\d*\.\d*\.\d*', suburl)[0]
+# suburl = re.findall(r'Download latest release V\d*\.\d*\.\d*', data)[0]
+latest_version = re.findall(r'USBDLM V\d*\.\d*\.\d*', data)[0].split('V')[1]
 print('Latest version from usbdlm download page: ' + latest_version)
 
 # Get last committed chocolatey version from nuspec
