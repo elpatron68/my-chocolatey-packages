@@ -17,5 +17,5 @@ for %%a in (%packages%) do (
     echo. >> %LOGFILE%
 )
 
-type %LOGFILE% | telegram-send --stdin
+rem type %LOGFILE% | telegram-send --stdin
 echo Sent log file as Telegram message
