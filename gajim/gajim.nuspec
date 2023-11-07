@@ -26,7 +26,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>1.8.2</version>
+    <version>1.8.3</version>
     <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <owners>elpatron</owners>
@@ -39,7 +39,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://gajim.org/</projectUrl>
     <iconUrl>https://gajim.org/img/gajim-logo.png</iconUrl>
-    <copyright>Copyright © 2003-2018 Gajim Team</copyright>
+    <copyright>Copyright © 2003-2023 Gajim Team</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>https://www.gnu.org/licenses/gpl-3.0.html</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -47,7 +47,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <docsUrl>https://dev.gajim.org/gajim/gajim/wikis/home?lang=en</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <bugTrackerUrl>https://dev.gajim.org/gajim/gajim/issues</bugTrackerUrl>
-    <tags>gajim XMPP messenger OMEMO</tags>
+    <tags>gajim XMPP messenger OMEMO PGP OpenPGP</tags>
     <summary>>Full featured and easy to use Jabber/XMPP client</summary>
     <description>
 Gajim aims to be an easy to use and fully-featured XMPP client. It is open source and released under the GNU General Public License (GPL). 
