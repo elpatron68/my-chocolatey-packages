@@ -40,19 +40,23 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <projectUrl>https://www.lancom-systems.de/</projectUrl>
     <!-- There are a number of CDN Services that can be used for hosting the Icon for a package. More information can be found here: https://docs.chocolatey.org/en-us/create/create-packages#package-icon-guidelines -->
     <!-- Here is an example using Githack -->
-    <!--<iconUrl>http://rawcdn.githack.com/__REPLACE_YOUR_REPO__/master/icons/lancom-vpn-client.png</iconUrl>-->
-    <!-- <copyright>Year Software Vendor</copyright> -->
+    <iconUrl>https://raw.githubusercontent.com/elpatron68/my-chocolatey-packages/refs/heads/master/LANCOM-VPN-Client/LTA.png</iconUrl>
+    <copyright>2019 LANCOM Systems GmbH</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
     <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
+    <docsUrl>https://www.lancom-systems.de/fileadmin/download/documentation/VPN-Client/IG_VPN-Client-Windows_DE.pdf</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
     <tags>lancom-vpn-client SPACE_SEPARATED</tags>
     <summary>__REPLACE__</summary>
-    <description>__REPLACE__MarkDown_Okay </description>
-    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
+    <description># LANCOM Advanced VPN-Client
+The LANCOM Advanced VPN Client provides mobile employees with encrypted access to the company network, whether they are at their home office, on the road, or even abroad.
+
+30 day demo license included.
+</description>
+    <releaseNotes>https://www.lancom-systems.de/fileadmin/download/LC-VPN-Client-Advanced/RN_Advanced-VPN-Client-622-Rel_DE.pdf</releaseNotes>
     <!-- =============================== -->
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
