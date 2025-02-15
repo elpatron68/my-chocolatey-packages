@@ -67,7 +67,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 - A running HylaFAX server in your network (should be obvious ;-) )
 - A program to view faxes (optional, also see the FAQ)
 - A PostScript viewer (optional, e.g. Ghostview)
-- GhostScript (optional)
+- GhostScript
 - tiff2pdf from the libtiff utilities package (optional)
     </description>
     <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
@@ -75,7 +75,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
     <dependencies>
-      <dependency id="ghostscript" />
+      <dependency id="Ghostscript.app" />
     </dependencies>
     <!-- chocolatey-core.extension - https://chocolatey.org/packages/chocolatey-core.extension
          - You want to use Get-UninstallRegistryKey on less than 0.9.10 (in chocolateyUninstall.ps1)
