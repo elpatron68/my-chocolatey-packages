@@ -1,7 +1,7 @@
 
 $ErrorActionPreference = 'Stop'
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://www.ophthalmostar.de/?sdm_process_download=1&download_id=2796'
+$url        = 'https://www.ophthalmostar.de/NetRadioSetup.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
