@@ -26,8 +26,8 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>0.6.2</version>
-    <packageSourceUrl>https://gitlab.com/m-busche/chocolatey-packages</packageSourceUrl>
+    <version>0.6.3</version>
+    <packageSourceUrl>https://github.com/elpatron68/my-chocolatey-packages</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <!--<owners>__REPLACE_YOUR_NAME__</owners>-->
     <!-- ============================== -->
@@ -43,10 +43,10 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://bitbucket.org/jonaswolz/</projectSourceUrl>
+    <projectSourceUrl>https://github.com/jwolz/yajhfc</projectSourceUrl>
     <docsUrl>http://www.yajhfc.de/documentation/wiki</docsUrl>
-    <!--<mailingListUrl></mailingListUrl>-->
-    <!--<bugTrackerUrl></bugTrackerUrl>-->
+    <mailingListUrl>https://www.yajhfc.de/support/mailing-lists</mailingListUrl>
+    <bugTrackerUrl>https://github.com/jwolz/yajhfc/issues</bugTrackerUrl>
     <tags>yajhfc Hylafax Client Fax</tags>
     <summary>YajHFC (Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java.</summary>
     <description>

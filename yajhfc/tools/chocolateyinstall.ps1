@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'http://download.yajhfc.de/releases/yajhfc-0_6_2-setup.exe'
+$url        = 'https://download.yajhfc.de/releases/yajhfc-0_6_3-setup.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $packageArgs = @{
 
   softwareName  = 'YajHFC*'
 
-  checksum      = '0636784A1CFAE7FE78565DF8A4A8D5463FE19004A82ABF75B35FE6E6C7B19DF1'
+  checksum      = '5777BACC6AD1CF3954EBD1CBFB74460984196F04621DE3B6690B6381436844B5'
   checksumType  = 'sha256'
 
   silentArgs    = "/SILENT /NORESTART"
