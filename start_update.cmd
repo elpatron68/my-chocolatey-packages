@@ -7,14 +7,14 @@ set GOTIFYURL=https://gotify.elpatron.me
 del /q %LOGFILE% >nul 2>&1
 echo Git pull...
 echo Git pull: > %LOGFILE%
-git pull origin master >> %LOGFILE%
+"C:\Program Files\Git\bin\git.exe" pull origin master >> %LOGFILE%
 echo.
 echo. >> %LOGFILE%
 set packages=lanconfig lanmonitor streamwriter usbdlm avpn
 for %%a in (%packages%) do (
     del /q %%a\*.nupkg >nul 2>&1
     echo Checking %%a for update...
-    python autoupdate\update_%%a.py >> %LOGFILE%
+    .\.venv\Scripts\python.exe autoupdate\update_%%a.py >> %LOGFILE%
     rem IF %ERRORLEVEL% EQU 0 (echo No update available) ELSE (echo Package updated and commited)
     IF %ERRORLEVEL% EQU 0 (
         C:\Windows\System32\curl.exe "%GOTIFYURL%/message?token=%GOTIFYTOKEN%" -F "title=Chocolatey Update check %%a" -F "message=Kein Update gefunden." -F "priority=5"

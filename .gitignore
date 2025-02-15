@@ -9,3 +9,4 @@ minio-servertmp.file
 gajimtmp.file
 minio-clienttmp.file
 test
+.venv
