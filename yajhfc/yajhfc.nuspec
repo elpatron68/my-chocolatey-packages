@@ -34,7 +34,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>YajHFC (Install)</title>
+    <title>YajHFc (Install)</title>
     <authors>Jonas Wolz</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>http://www.yajhfc.de/</projectUrl>
@@ -48,7 +48,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <mailingListUrl>https://www.yajhfc.de/support/mailing-lists</mailingListUrl>
     <bugTrackerUrl>https://github.com/jwolz/yajhfc/issues</bugTrackerUrl>
     <tags>yajhfc hylafax client fax</tags>
-    <summary>YajHFC (Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java.</summary>
+    <summary>YajHFc (Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java.</summary>
     <description>
 # Yet Another Hylafax Client
 

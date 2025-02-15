@@ -10,7 +10,7 @@ echo Git pull: > %LOGFILE%
 "C:\Program Files\Git\bin\git.exe" pull origin master >> %LOGFILE%
 echo.
 echo. >> %LOGFILE%
-set packages=lanconfig lanmonitor streamwriter usbdlm avpn
+set packages=lanconfig lanmonitor streamwriter usbdlm avpn netradio
 for %%a in (%packages%) do (
     del /q %%a\*.nupkg >nul 2>&1
     echo Checking %%a for update...
