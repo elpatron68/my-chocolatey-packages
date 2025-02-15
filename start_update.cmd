@@ -18,8 +18,10 @@ for %%a in (%packages%) do (
 
     IF %ERRORLEVEL% EQU 1 (
         C:\Windows\System32\curl.exe "%GOTIFYURL%/message?token=%GOTIFYTOKEN%" -F "title=Chocolatey Update check %%a" -F "message=Update gefunden!" -F "priority=3"
+        echo %%a: Update found >> %LOGFILE%
     ) ELSE (
         C:\Windows\System32\curl.exe "%GOTIFYURL%/message?token=%GOTIFYTOKEN%" -F "title=Chocolatey Update check %%a" -F "message=Kein Update gefunden." -F "priority=5"
+        echo %%a: No update found >> %LOGFILE%
     )
     echo.
     echo. >> %LOGFILE%
