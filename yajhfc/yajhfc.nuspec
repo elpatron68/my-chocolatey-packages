@@ -38,7 +38,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>Jonas Wolz</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>http://www.yajhfc.de/</projectUrl>
-    <iconUrl>http://www.yajhfc.de/images/yajhfc-64x64.png</iconUrl>
+    <iconUrl>https://cdn.statically.io/gh/elpatron68/my-chocolatey-packages/80841a66/yajhfc/yajhfc.png</iconUrl>
     <copyright>2016 Jonas Wolz</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
@@ -47,7 +47,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <docsUrl>http://www.yajhfc.de/documentation/wiki</docsUrl>
     <mailingListUrl>https://www.yajhfc.de/support/mailing-lists</mailingListUrl>
     <bugTrackerUrl>https://github.com/jwolz/yajhfc/issues</bugTrackerUrl>
-    <tags>yajhfc Hylafax Client Fax</tags>
+    <tags>yajhfc hylafax client fax</tags>
     <summary>YajHFC (Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java.</summary>
     <description>
 # Yet Another Hylafax Client
