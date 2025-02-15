@@ -41,29 +41,40 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- There are a number of CDN Services that can be used for hosting the Icon for a package. More information can be found here: https://docs.chocolatey.org/en-us/create/create-packages#package-icon-guidelines -->
     <!-- Here is an example using Githack -->
     <!--<iconUrl>http://rawcdn.githack.com/__REPLACE_YOUR_REPO__/master/icons/netradio.png</iconUrl>-->
-    <!-- <copyright>Year Software Vendor</copyright> -->
+    <copyright>2015 Dr. Wilhelm Happe</copyright>
     <!-- If there is a license Url available, it is required for the community feed -->
     <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
     <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
+    <docsUrl>https://www.ophthalmostar.de/NetRadio.pdf</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
     <!--<bugTrackerUrl></bugTrackerUrl>-->
     <tags>netradio SPACE_SEPARATED</tags>
-    <summary>__REPLACE__</summary>
-    <description>__REPLACE__MarkDown_Okay </description>
-    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
+    <summary>NetRadio plays internet radio streams and manages your favorite stations.</summary>
+    <description>Netradio plays Internet live streams from radio stations and offers simple management for up to 24 stations.
+
+The application includes a search function for new stations. It uses the API from www.radio-browser.info for this.
+
+Live stream URLs of your favourite stations are therefore automatically transferred.
+    </description>
+    <releaseNotes>### New in version 2.5
+
+- Automatic streamtitle update/synchronization
+- Now 25 buttons on player page
+- Optimized online search to find internet radios
+- The listened stream can be recorded in a file
+- m3u8-Support (HLS playlists)
+- History of played songs, export possible
+- MiniPlayer or minimize to tray
+- Scheduled tasks (play, record, stop)
+- Portable version
+    </releaseNotes>
     <!-- =============================== -->
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
-    <!--<dependencies>
-      <dependency id="" version="__MINIMUM_VERSION__" />
-      <dependency id="" version="[__EXACT_VERSION__]" />
-      <dependency id="" version="[_MIN_VERSION_INCLUSIVE, MAX_VERSION_INCLUSIVE]" />
-      <dependency id="" version="[_MIN_VERSION_INCLUSIVE, MAX_VERSION_EXCLUSIVE)" />
-      <dependency id="" />
-      <dependency id="chocolatey-core.extension" version="1.1.0" />
-    </dependencies>-->
+    <dependencies>
+      <dependency id="dotnet-8.0-desktopruntime" />
+    </dependencies>
     <!-- chocolatey-core.extension - https://community.chocolatey.org/packages/chocolatey-core.extension -->
 
     <!--<provides>NOT YET IMPLEMENTED</provides>-->
