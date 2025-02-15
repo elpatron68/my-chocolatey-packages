@@ -8,7 +8,7 @@
     <title>LANCOM Advanced VPN-Client (Install)</title>
     <authors>LANCOM Systems GmbH</authors>
     <projectUrl>https://www.lancom-systems.com/products/remote-mobile-access/lancom-advanced-vpn-client-windows</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/elpatron68/my-chocolatey-packages/refs/heads/master/LANCOM-VPN-Client/LTA.png</iconUrl>
+    <iconUrl>https://cdn.statically.io/gh/elpatron68/my-chocolatey-packages/refs/heads/master/LANCOM-VPN-Client/LTA.png</iconUrl>
     <copyright>2019 LANCOM Systems GmbH</copyright>
     <docsUrl>https://www.lancom-systems.de/fileadmin/download/documentation/VPN-Client/IG_VPN-Client-Windows_DE.pdf</docsUrl>
     <tags>lancom vpn client ipsec demo remote secure</tags>
