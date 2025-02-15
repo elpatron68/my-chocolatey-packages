@@ -16,7 +16,7 @@
     <docsUrl>https://dev.gajim.org/gajim/gajim/wikis/home?lang=en</docsUrl>
     <bugTrackerUrl>https://dev.gajim.org/gajim/gajim/issues</bugTrackerUrl>
     <tags>gajim XMPP messenger OMEMO PGP OpenPGP</tags>
-    <summary>>Full featured and easy to use Jabber/XMPP client</summary>
+    <summary>Full featured and easy to use Jabber/XMPP client</summary>
     <description>
 Gajim aims to be an easy to use and fully-featured XMPP client. It is open source and released under the GNU General Public License (GPL). 
 
