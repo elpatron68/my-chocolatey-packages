@@ -15,9 +15,9 @@ print('Searching for Streamwriter update')
 url = 'https://streamwriter.org/en/'
 try:
     data = requests.get(url).text
-    version = re.findall(r'Current version: \d\.\d\.\d\.\d', data)[0]
-    download_url = 'https://streamwriter.org/en/downloads/2/'
-    latest_version = re.findall(r'\d\.\d\.\d\.\d', version)[0]
+    version = re.findall(r'Current version: \d\.\d\.\d\.\d{1,4}', data)[0]
+    download_url = 'https://streamwriter.org/en/downloads/streamwriter_setup-x86_64.exe'
+    latest_version = re.findall(r'\d\.\d\.\d\.\d{1,4}', version)[0]
     print('Latest version from Streamwriter download page: ' + latest_version)
 except:
     print('Requesting URL failed, terminating.')
