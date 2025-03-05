@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://my.lancom-systems.de/download/LC-VPN-Client/LC-Advanced-VPN-Client-Win-622-Rel-x86-64.exe'
+$url        = 'https://my.lancom-systems.de/download/LC-VPN-Client/LC-Advanced-VPN-Client-Win-623-Rel-x86-64.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $packageArgs = @{
   
   softwareName  = 'LANCOM Trusted Access Client*'
 
-  checksum      = '89CB5E95986E195E4DAF5B3CE4FDD892A4FD2849FC08EAFFC7D5A28C02B1DA0C'
+  checksum      = 'b933ea0f31ae163fc6184f6932690a9e15d006b96fd3894d91a1025f52484b0d'
   checksumType  = 'sha256'
   
   silentArgs    = '/s /l1031< /v"/qn /norestart"'
