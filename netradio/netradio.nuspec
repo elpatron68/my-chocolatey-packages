@@ -5,6 +5,7 @@
     <version>2.5.6</version>
     <title>netradio (Install)</title>
     <authors>Dr. Wilhelm Happe</authors>
+    <owners>elpatron</owners>
     <projectUrl>https://www.ophthalmostar.de/freeware/#netradio</projectUrl>
     <iconUrl>https://cdn.statically.io/gh/elpatron68/my-chocolatey-packages/refs/heads/master/netradio/netradio.png</iconUrl>
     <copyright>2015 Dr. Wilhelm Happe</copyright>

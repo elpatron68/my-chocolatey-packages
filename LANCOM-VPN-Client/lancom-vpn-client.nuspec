@@ -11,7 +11,7 @@
     <iconUrl>https://cdn.statically.io/gh/elpatron68/my-chocolatey-packages/refs/heads/master/LANCOM-VPN-Client/LTA.png</iconUrl>
     <copyright>2019 LANCOM Systems GmbH</copyright>
     <docsUrl>https://www.lancom-systems.de/fileadmin/download/documentation/VPN-Client/IG_VPN-Client-Windows_DE.pdf</docsUrl>
-    <tags>lancom vpn client ipsec demo remote secure</tags>
+    <tags>lancom vpn client ipsec trial demo remote secure</tags>
     <summary>LANCOM Advanced VPN Client enables secure, encrypted access to the company network for mobile employees.</summary>
     <description># LANCOM Advanced VPN-Client
 The LANCOM Advanced VPN Client provides mobile employees with encrypted access to the company network, whether they are at their home office, on the road, or even abroad.
