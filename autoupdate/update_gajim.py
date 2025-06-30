@@ -1,6 +1,6 @@
 import re
 import requests
-import json
+# import json
 import sys
 import choco
 from packaging.version import Version
@@ -14,8 +14,9 @@ print('Searching for Gajim update')
 # Get latest version information an download url from HTML
 url = 'https://gajim.org/download/'
 data = requests.get(url).text
-suburl = re.findall(r'<td><span class="label label-primary">\d*\.\d*\.\d*', data)[0]
-latest_version = re.findall(r'\d*\.\d*\.\d*', suburl)[0]
+# suburl = re.findall(r'<td><span class="label label-primary">\d*\.\d*\.\d*', data)[0]
+# https://gajim.org/downloads/2.3/Gajim-2.3.1-64bit.exe
+latest_version = re.findall(r'\d*\.\d*\.\d*', data)[0]
 print('Latest version from Gajim download page: ' + latest_version)
 
 # Get last committed chocolatey version from nuspec
