@@ -46,22 +46,7 @@ LANGUAGES:
 Gajim is available in 29 languages: Basque, Belarusian, Brasilian, British, Bulgarian, Chinese (simplified), Croatian, Czech, Danish, English, Esperanto, French, Galician, German, Hebrew, Hungarian, Italian, Japanese, Kazakh, Lithuanian, Norwegian (Bokmål), Polish, Russian, Serbian, Slovak, Spanish, Swedish, Turkish, and Ukrainian
     </description>
     <releaseNotes>
-Gajim 1.1.0 (06 November 2018)
-
-  New
-
-  * Remove support for XEP-0091
-
-  Bug fixes
-
-  * 8968 Windows: Gajim loads DLLs from wrong location
-  * 9322 Error when adding contact
-  * 9357 Acquire sleep inhibtor correctly after sleep
-  * 9385 Ignore invalid bookmarks
-  * 9386 Discovery: Browsing nodes without identity
-  * 9393 Error when parsing invalid timestamps
-  * 9398 Error on jingle file transfer
-
+Gajim 2.3.3 is a bugfix release that fixes some issues with the new OMEMO implementation and improves the performance of the new message list.
     </releaseNotes>
   </metadata>
   <files>
