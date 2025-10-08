@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://my.lancom-systems.de/download/LANtools/LANmonitor-10.92.0005-RU1.exe'
+$url        = 'https://my.lancom-systems.de/download/LANtools/LANmonitor-10.92.0008-RU2.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $packageArgs = @{
 
   softwareName  = 'LANmonitor*'
 
-  checksum      = '39f1bf3986133bdb9103c665c4963648731085935dbd4420602ce7add1d5ba60'
+  checksum      = '68d3f699f557c6a3dfa5075788fae676e05f5cb11b3adceb1a16526474c112dd'
   checksumType  = 'sha256'
 
   silentArgs    = "/params:/silent"
