@@ -24,8 +24,7 @@ print('Chocolatey Version: ' + nupkg_version)
 
 if Version(latest_version) > Version(nupkg_version):
     download_url = 'https://www.uwe-sieber.de/files/usbdlm_x64.msi'
-    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, download_url)
-    sys.exit()
+    choco.update_package(PATH, NUSPEC_FILE, PS1_FILE, latest_version, '', download_url)
 else:
     print('No update available')
-    sys.exit()
+    sys.exit(0)

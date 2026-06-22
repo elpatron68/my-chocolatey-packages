@@ -1,0 +1,5 @@
+@echo off
+rem Kopieren nach start_update.local.cmd (wird nicht ins Repo committed).
+set GOTIFYTOKEN=dein-token-hier
+rem Optional:
+rem set GOTIFYURL=https://gotify.elpatron.me

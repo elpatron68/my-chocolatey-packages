@@ -10,3 +10,4 @@ gajimtmp.file
 minio-clienttmp.file
 test
 .venv
+start_update.local.cmd

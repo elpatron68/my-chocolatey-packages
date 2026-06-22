@@ -4,6 +4,7 @@ import hashlib
 import os
 import re
 import subprocess
+import sys
 import urllib.request
 
 
@@ -40,6 +41,7 @@ def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, u
     choco_pack_push(package_path)
     git_commit_push(package_path)
     print('All files updated.')
+    sys.exit(1)
 
 
 def del_old_nupkg(package_path):
@@ -91,7 +93,7 @@ def update_ps1_file(ps1_file, shachecksum, url, x86=False, x64=False):
 
 
 def calc_checksum(download_url, package_path):
-    tmp_file = package_path + 'tmp.file'
+    tmp_file = os.path.join(package_path, 'tmp.file')
     print('Downloading file')
     print('Download URL: ' + download_url)
     urllib.request.urlretrieve(download_url, tmp_file)
@@ -112,11 +114,10 @@ def choco_pack_push(package_path):
 
 
 def git_commit_push(package_path):
-    commitmessageparameter = '-am ' + '"' + package_path + ' automatic update"'
-    # subprocess.call(['git.exe', 'pull', 'origin', 'master'], cwd=package_path + '/..')
-    subprocess.call(['git.exe', 'commit', commitmessageparameter],
-                    cwd=package_path + '/..')
-    subprocess.call(['git.exe', 'push'], cwd=package_path + '/..')
+    repo_root = os.path.join(package_path, '..')
+    commit_message = package_path + ' automatic update'
+    subprocess.call(['git.exe', 'commit', '-am', commit_message], cwd=repo_root)
+    subprocess.call(['git.exe', 'push'], cwd=repo_root)
 
 
 '''
