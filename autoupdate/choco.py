@@ -64,6 +64,28 @@ def update_nuspec(nuspec_file, version):
         f.write(content_new)
 
 
+def update_nuspec_release_notes(nuspec_file, release_notes):
+    """Replace <releaseNotes>...</releaseNotes> with the given text."""
+    print('Updating releaseNotes in ' + nuspec_file)
+    # Escape XML special characters in free text.
+    escaped = (
+        release_notes
+        .replace('&', '&amp;')
+        .replace('<', '&lt;')
+        .replace('>', '&gt;')
+    )
+    block = f'<releaseNotes>\n{escaped}\n    </releaseNotes>'
+    with open(nuspec_file, 'r', encoding='utf8') as f:
+        content = f.read()
+    regex = re.compile(r'<releaseNotes>.*?</releaseNotes>', re.IGNORECASE | re.DOTALL)
+    if not regex.search(content):
+        print('Warning: No <releaseNotes> element found, skipping')
+        return
+    content_new = regex.sub(block, content)
+    with open(nuspec_file, 'w', encoding='utf8') as f:
+        f.write(content_new)
+
+
 def update_ps1_file(ps1_file, shachecksum, url, x86=False, x64=False):
     print('Replacing checksums and downlod urls in ' + ps1_file)
     with open(ps1_file, 'r', encoding="utf8") as f:
