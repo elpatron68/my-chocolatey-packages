@@ -28,16 +28,21 @@ def get_version_from_nupgk(nuspecfile):
 
 def update_package(package_path, nuspec_file, ps1_file, latest_version, url64, url32=''):
     print('Update found')
-    # nupgkfiles = find_files(package_path, '*.nupkg')
     del_old_nupkg(package_path)
-    
+
+    # Download and checksum first so a failed download cannot leave a half-updated nuspec.
+    checksum64 = ''
+    checksum32 = ''
+    if url64 != '':
+        checksum64 = calc_checksum(url64, package_path)
+    if url32 != '':
+        checksum32 = calc_checksum(url32, package_path)
+
     update_nuspec(nuspec_file, latest_version)
     if url64 != '':
-        shachecksum = calc_checksum(url64, package_path)
-        update_ps1_file(ps1_file, shachecksum, url64, False, True)
+        update_ps1_file(ps1_file, checksum64, url64, False, True)
     if url32 != '':
-        shachecksum = calc_checksum(url32, package_path)
-        update_ps1_file(ps1_file, shachecksum, url32, True, False)
+        update_ps1_file(ps1_file, checksum32, url32, True, False)
     choco_pack_push(package_path)
     git_commit_push(package_path)
     print('All files updated.')
@@ -138,7 +143,10 @@ def choco_pack_push(package_path):
 def git_commit_push(package_path):
     repo_root = os.path.join(package_path, '..')
     commit_message = package_path + ' automatic update'
-    subprocess.call(['git.exe', 'commit', '-am', commit_message], cwd=repo_root)
+    # Stage only this package — never `git commit -am`, which would scoop up
+    # unrelated dirty files from a previously failed update of another package.
+    subprocess.call(['git.exe', 'add', '--', package_path], cwd=repo_root)
+    subprocess.call(['git.exe', 'commit', '-m', commit_message], cwd=repo_root)
     subprocess.call(['git.exe', 'push'], cwd=repo_root)
 
 
