@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://my.lancom-systems.de/download/LC-VPN-Client/LC-Advanced-VPN-Client-Win-625-Rel-x86-64.exe'
+$url        = 'https://downloads.lancom-systems.de/LC-VPN-Client/LC-Advanced-VPN-Client-Win-625-Rel-x86-64.exe'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
